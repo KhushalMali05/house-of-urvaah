@@ -6,25 +6,25 @@ const STEAL_DEALS = [
   {
     id: 'steal-1',
     label: 'EVERYTHING UNDER',
-    price: '999',
+    price: '10,000',
     image: '/assets/Images/Blue02.png',
-    alt: 'Everything under 999 - Clothing Apparel',
+    alt: 'Everything under 10,000 - Clothing Apparel',
     link: '#sale'
   },
   {
     id: 'steal-2',
     label: 'TOPS UNDER',
-    price: '799',
+    price: '8,000',
     image: '/assets/Images/Brown02.png',
-    alt: 'Tops under 799',
+    alt: 'Tops under 8,000',
     link: '#sale'
   },
   {
     id: 'steal-3',
     label: 'JEWELLERY UNDER',
-    price: '599',
+    price: '5,000',
     image: '/assets/Images/Peach02.png', // Clean close-up product image without baked-in graphic text overlay
-    alt: 'Jewellery under 599',
+    alt: 'Jewellery under 5,000',
     link: '#sale'
   }
 ];
