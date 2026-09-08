@@ -1,4 +1,5 @@
 import React from 'react';
+// House of Urvaah - Home Page
 import { HeroParallaxBlock } from '../components/home/HeroParallaxBlock';
 import { CategoryGrid } from '../components/home/CategoryGrid';
 import { EditorialBanner } from '../components/home/EditorialBanner';
