@@ -720,11 +720,11 @@ export const TrendingOnGram = () => {
   return (
     <section className="py-12 md:py-16 px-4 md:px-8 max-w-[1800px] mx-auto bg-white font-serif">
       {/* Section Heading matching BestSellers typography and left alignment */}
-      <div className="mb-8 md:mb-12 border-b border-neutral-200 pb-5 text-left">
+      <div className="mb-10 md:mb-14 border-b border-neutral-200 pb-6 md:pb-7 text-left">
         <span className="text-[10px] tracking-[0.3em] uppercase text-neutral-400 font-serif block mb-1">
           AS SEEN ON INSTAGRAM
         </span>
-        <h2 className="text-xl md:text-3xl font-serif tracking-[0.2em] uppercase font-normal text-brand-dark">
+        <h2 className="section-heading text-brand-dark">
           TRENDING ON THE GRAM
         </h2>
       </div>

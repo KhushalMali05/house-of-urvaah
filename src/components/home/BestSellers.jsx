@@ -8,11 +8,11 @@ export const BestSellers = ({ onQuickView }) => {
     <section className="py-16 md:py-20 bg-white font-serif">
       <div className="max-w-[1800px] mx-auto px-4 md:px-8">
         {/* Section Heading */}
-        <div className="mb-8 md:mb-12 border-b border-neutral-200 pb-5">
+        <div className="mb-10 md:mb-14 border-b border-neutral-200 pb-6 md:pb-7">
           <span className="text-[10px] tracking-[0.3em] uppercase text-neutral-400 font-serif block mb-1">
             CURATED ESSENTIALS
           </span>
-          <h2 className="text-xl md:text-3xl font-serif tracking-[0.2em] uppercase font-normal text-brand-dark">
+          <h2 className="section-heading text-brand-dark">
             BEST SELLERS
           </h2>
         </div>

@@ -23,6 +23,7 @@ export const Header = () => {
 
     const getTargetSection = () => {
       return (
+        document.getElementById('trending-on-gram') ||
         document.getElementById('best-sellers') ||
         document.getElementById('recommended-for-you') ||
         document.querySelector('#women')
@@ -89,7 +90,7 @@ export const Header = () => {
             className="p-1 hover:opacity-60 transition-opacity text-brand-dark"
             aria-label="Open navigation drawer"
           >
-            <Menu className="w-7 h-7 stroke-[3]" />
+            <Menu className="w-7 h-7 stroke-[1.5]" />
           </button>
 
           {/* Right Side: Search, Account/Log In, Bag Icons + Help */}
@@ -100,7 +101,7 @@ export const Header = () => {
               aria-label="Search"
               title="Search"
             >
-              <Search className="w-6 h-6 stroke-[3]" />
+              <Search className="w-6 h-6 stroke-[1.5]" />
             </button>
 
             <a
@@ -109,7 +110,7 @@ export const Header = () => {
               aria-label="Log In"
               title="Log In"
             >
-              <User className="w-6 h-6 stroke-[3]" />
+              <User className="w-6 h-6 stroke-[1.5]" />
             </a>
 
             <button
@@ -118,7 +119,7 @@ export const Header = () => {
               aria-label="Shopping Bag"
               title="Shopping Bag"
             >
-              <ShoppingBag className="w-6 h-6 stroke-[3]" />
+              <ShoppingBag className="w-6 h-6 stroke-[1.5]" />
               <span className="text-xs font-bold tracking-wider font-mono">
                 [{cartCount}]
               </span>

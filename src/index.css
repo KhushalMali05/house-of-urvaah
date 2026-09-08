@@ -64,6 +64,17 @@
   }
 }
 
+@layer components {
+  /* Shared Major Section Heading Typography Scale */
+  .section-heading {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif tracking-[0.2em] uppercase font-normal leading-[1.2];
+  }
+
+  .section-heading-lg {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif tracking-[0.2em] uppercase font-normal leading-[1.2];
+  }
+}
+
 /* Image zoom hover effect helper */
 .editorial-img-zoom {
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
