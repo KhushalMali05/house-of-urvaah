@@ -23,7 +23,7 @@ export const Newsletter = () => {
   };
 
   return (
-    <section className="py-24 bg-white font-serif text-brand-dark border-b border-neutral-100">
+    <section className="py-24 bg-white font-serif text-brand-dark border-b border-neutral-300">
       <div className="max-w-3xl mx-auto px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

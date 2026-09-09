@@ -34,6 +34,16 @@ const PlaceholderPage = ({ title }) => (
 );
 
 export function App() {
+  React.useEffect(() => {
+    // Explicitly override browser scroll restoration to prevent restoring scroll position on refresh
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    // Force page scroll to top on initial mount / page refresh
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <CartProvider>
       <div className="min-h-screen flex flex-col bg-white text-brand-dark antialiased font-serif selection:bg-brand-dark selection:text-white relative">
