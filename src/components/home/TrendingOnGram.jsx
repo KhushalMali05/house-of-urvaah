@@ -287,9 +287,8 @@ const InstagramIcon = () => (
   </svg>
 );
 
-const VideoCard = ({ item, onOpenLook }) => {
+const VideoCard = ({ item, isMuted, onToggleMute, onOpenLook }) => {
   const videoRef = useRef(null);
-  const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -301,11 +300,7 @@ const VideoCard = ({ item, onOpenLook }) => {
   const toggleSound = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    if (videoRef.current) {
-      const nextMuted = !videoRef.current.muted;
-      videoRef.current.muted = nextMuted;
-      setIsMuted(nextMuted);
-    }
+    onToggleMute();
   };
 
   return (
@@ -523,11 +518,11 @@ const ShopTheLookModal = ({ look, currentIndex, totalLooks, onClose, onPrev, onN
           {/* Scrollable Content Area */}
           <div className="flex-1 overflow-y-auto p-5 sm:p-6 md:p-7 space-y-4">
             {/* Main Product Image Viewer with Carousel Controls */}
-            <div className="relative w-full h-[210px] sm:h-[240px] md:h-[260px] rounded-xl overflow-hidden bg-neutral-100 group shadow-xs">
+            <div className="relative w-full h-[230px] sm:h-[260px] md:h-[280px] rounded-xl overflow-hidden bg-neutral-100 group shadow-xs flex items-center justify-center">
               <img
                 src={selectedImage}
                 alt={look.product.name}
-                className="w-full h-full object-cover object-top transition-all duration-300"
+                className="w-full h-full object-contain object-center transition-all duration-300 p-1"
               />
 
               {look.product.gallery.length > 1 && (
@@ -550,7 +545,7 @@ const ShopTheLookModal = ({ look, currentIndex, totalLooks, onClose, onPrev, onN
                       <span
                         key={i}
                         className={`h-1.5 rounded-full transition-all ${
-                          i === selectedImgIndex ? 'w-4 bg-white' : 'w-1.5 bg-white/60'
+                          i === selectedImgIndex ? 'w-4 bg-neutral-800' : 'w-1.5 bg-neutral-400/60'
                         }`}
                       />
                     ))}
@@ -582,7 +577,7 @@ const ShopTheLookModal = ({ look, currentIndex, totalLooks, onClose, onPrev, onN
                       key={idx}
                       type="button"
                       onClick={() => handleThumbnailClick(img, idx)}
-                      className={`relative w-14 h-16 sm:w-16 sm:h-20 rounded-lg overflow-hidden flex-shrink-0 transition-all cursor-pointer ${
+                      className={`relative w-14 h-16 sm:w-16 sm:h-20 rounded-lg overflow-hidden flex-shrink-0 bg-neutral-100 transition-all cursor-pointer flex items-center justify-center ${
                         isSelected
                           ? 'border-2 border-red-500 ring-2 ring-red-500/30'
                           : 'border border-neutral-200 hover:border-neutral-400 opacity-75 hover:opacity-100'
@@ -591,7 +586,7 @@ const ShopTheLookModal = ({ look, currentIndex, totalLooks, onClose, onPrev, onN
                       <img
                         src={img}
                         alt={`Look thumbnail ${idx + 1}`}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-contain object-center p-0.5"
                       />
                     </button>
                   );
@@ -700,8 +695,14 @@ const ShopTheLookModal = ({ look, currentIndex, totalLooks, onClose, onPrev, onN
 
 export const TrendingOnGram = () => {
   const [activeModalIndex, setActiveModalIndex] = useState(null);
+  const [unmutedVideoId, setUnmutedVideoId] = useState(null);
+
+  const handleToggleMute = (id) => {
+    setUnmutedVideoId((prevId) => (prevId === id ? null : id));
+  };
 
   const handleOpenModal = (index) => {
+    setUnmutedVideoId(null);
     setActiveModalIndex(index);
   };
 
@@ -745,7 +746,12 @@ export const TrendingOnGram = () => {
               idx >= 4 ? 'lg:hidden' : ''
             }`}
           >
-            <VideoCard item={item} onOpenLook={() => handleOpenModal(idx)} />
+            <VideoCard
+              item={item}
+              isMuted={unmutedVideoId !== item.id}
+              onToggleMute={() => handleToggleMute(item.id)}
+              onOpenLook={() => handleOpenModal(idx)}
+            />
           </motion.div>
         ))}
       </div>

@@ -52,10 +52,31 @@ export const EditorialBanner = () => {
                   DISCOVER THE COLLECTION
                 </Button>
               </a>
-              <a href="#campaign">
-                <Button variant="outline">
-                  VIEW CAMPAIGN FILM
-                </Button>
+              <a href="#campaign" className="inline-block">
+                <button
+                  type="button"
+                  className="relative inline-flex items-center justify-center font-medium text-xs px-6 py-3 tracking-widest uppercase border border-brand-dark text-brand-dark group overflow-hidden transition-colors duration-400 select-none cursor-pointer"
+                >
+                  {/* Revealed background fill underneath */}
+                  <span className="absolute inset-0 bg-brand-dark pointer-events-none" />
+
+                  {/* Top-Left Triangular Curtain */}
+                  <span
+                    className="absolute inset-0 bg-[#F5F5F0] pointer-events-none transition-transform duration-400 ease-in-out group-hover:-translate-x-full group-hover:-translate-y-full"
+                    style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}
+                  />
+
+                  {/* Bottom-Right Triangular Curtain */}
+                  <span
+                    className="absolute inset-0 bg-[#F5F5F0] pointer-events-none transition-transform duration-400 ease-in-out group-hover:translate-x-full group-hover:translate-y-full"
+                    style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%)' }}
+                  />
+
+                  {/* Button Text Label */}
+                  <span className="relative z-10 text-brand-dark group-hover:text-white transition-colors duration-400 ease-in-out">
+                    VIEW CAMPAIGN FILM
+                  </span>
+                </button>
               </a>
             </div>
           </motion.div>

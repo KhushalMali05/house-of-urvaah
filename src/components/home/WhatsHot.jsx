@@ -54,12 +54,12 @@ export const WhatsHot = () => {
               alt={category.title}
               className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.03]"
             />
-            {/* Subtle elegant gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent transition-opacity duration-500 opacity-90 group-hover:opacity-100" />
-            
-            {/* Category Text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
-              <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-serif tracking-[0.15em] uppercase font-extrabold leading-tight drop-shadow-md">
+            {/* Category Text directly over clear image */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center z-10">
+              <h3 
+                className="text-white text-2xl md:text-3xl lg:text-4xl font-serif tracking-[0.15em] uppercase font-extrabold leading-tight"
+                style={{ textShadow: '0px 2px 8px rgba(0,0,0,0.7), 0px 1px 3px rgba(0,0,0,0.5)' }}
+              >
                 {category.title.split(' ').map((word, i) => (
                   <React.Fragment key={i}>
                     {word}

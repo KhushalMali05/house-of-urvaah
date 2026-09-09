@@ -76,7 +76,40 @@ const BotanicalDeco = ({ className = "" }) => (
   </svg>
 );
 
+const FULL_TEXT = "STEAL DEALS";
+
 export const StealDeals = () => {
+  const [displayText, setDisplayText] = React.useState('');
+  const [isDeleting, setIsDeleting] = React.useState(false);
+
+  React.useEffect(() => {
+    let timer;
+
+    if (!isDeleting && displayText.length < FULL_TEXT.length) {
+      // Type out character by character (~90ms per character)
+      timer = setTimeout(() => {
+        setDisplayText(FULL_TEXT.slice(0, displayText.length + 1));
+      }, 90);
+    } else if (!isDeleting && displayText.length === FULL_TEXT.length) {
+      // Pause at full text for 1.8 seconds
+      timer = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+    } else if (isDeleting && displayText.length > 0) {
+      // Delete character by character (~50ms per character)
+      timer = setTimeout(() => {
+        setDisplayText(FULL_TEXT.slice(0, displayText.length - 1));
+      }, 50);
+    } else if (isDeleting && displayText.length === 0) {
+      // Pause when empty for 0.5 seconds before re-typing
+      timer = setTimeout(() => {
+        setIsDeleting(false);
+      }, 500);
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting]);
+
   return (
     <section id="steal-deals" className="relative py-16 md:py-24 lg:py-28 bg-[#F7F4EF] overflow-hidden font-serif scroll-mt-20">
       {/* Subtle Botanical Leaf Line-Art in Far Right Edge */}
@@ -98,8 +131,30 @@ export const StealDeals = () => {
             <span className="text-xs md:text-sm tracking-[0.35em] uppercase text-neutral-400 font-serif block mb-2">
               THE URVAAH
             </span>
-            <h2 className="section-heading text-neutral-900 mb-4 md:mb-5">
-              STEAL DEALS
+            {/* Typewriter animated section heading with reserved container width */}
+            <h2 
+              className="section-heading text-neutral-900 mb-4 md:mb-5 relative inline-block"
+              aria-label="STEAL DEALS"
+            >
+              {/* Invisible ghost text locking full width & height to prevent layout reflow */}
+              <span className="invisible select-none pointer-events-none" aria-hidden="true">
+                STEAL DEALS
+                <span className="inline-block w-[2px] md:w-[3px] h-[0.75em] ml-1 sm:ml-1.5" />
+              </span>
+
+              {/* Overlaid typing text & blinking cursor */}
+              <span className="absolute left-0 top-0 bottom-0 flex items-center pointer-events-none" aria-hidden="true">
+                <span className="whitespace-pre">{displayText}</span>
+                <motion.span
+                  className="inline-block w-[2px] md:w-[3px] h-[0.75em] bg-neutral-900 ml-1 sm:ml-1.5 align-middle"
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              </span>
             </h2>
             <p className="text-xs sm:text-base italic font-light tracking-[0.18em] text-neutral-600 font-serif uppercase mb-4">
               STYLES YOU'LL LOVE, PRICES YOU'LL ADORE.
@@ -117,10 +172,27 @@ export const StealDeals = () => {
               </span>
               <a
                 href="#sale"
-                className="inline-flex items-center justify-center gap-3 px-9 py-4 bg-neutral-900 text-white text-xs md:text-sm font-serif tracking-[0.2em] uppercase hover:bg-neutral-800 transition-colors shadow-sm group"
+                className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-2.5 sm:py-3 bg-neutral-900 text-white hover:bg-white hover:text-neutral-900 border-2 border-neutral-900 text-xs font-serif tracking-[0.2em] uppercase transition-colors duration-350 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-sm group overflow-hidden"
               >
-                <span>SHOP SALE</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                {/* Vertical swap text container with strict line height clipping */}
+                <div className="relative h-4 overflow-hidden inline-flex items-center">
+                  {/* Invisible ghost span reserving container width */}
+                  <span className="invisible opacity-0 select-none pointer-events-none whitespace-nowrap" aria-hidden="true">
+                    SHOP SALE
+                  </span>
+
+                  {/* Primary Default Text: SHOP SALE */}
+                  <span className="absolute inset-0 inline-flex items-center justify-center leading-none whitespace-nowrap translate-y-0 group-hover:-translate-y-full transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                    SHOP SALE
+                  </span>
+
+                  {/* Secondary Hover Text: SHOP NOW */}
+                  <span className="absolute inset-0 inline-flex items-center justify-center leading-none whitespace-nowrap translate-y-full group-hover:translate-y-0 transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)]">
+                    SHOP NOW
+                  </span>
+                </div>
+
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-350 ease-[cubic-bezier(0.4,0,0.2,1)]" />
               </a>
             </div>
           </motion.div>

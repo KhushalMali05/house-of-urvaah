@@ -253,13 +253,14 @@ export const BEST_SELLERS_PRODUCTS = [
     tag: 'EDITORIAL',
     isNew: true,
     isBestSeller: true,
-    image: '/assets/Images/Blue_Crush.jpg',
+    image: '/assets/Images/Blue.png',
     hoverImage: '/assets/Images/Blue02.png',
     gallery: [
-      '/assets/Images/Blue_Crush.jpg',
+      '/assets/Images/Blue.png',
       '/assets/Images/Blue02.png',
       '/assets/Images/Blue03.png',
-      '/assets/Images/Blue.png'
+      '/assets/Images/Blue04.png',
+      '/assets/Images/Blue01.png'
     ],
     colors: ['#5B9BD5', '#111111'],
     sizes: ['XS', 'S', 'M', 'L'],

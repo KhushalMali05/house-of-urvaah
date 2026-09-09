@@ -90,18 +90,18 @@ export const Header = () => {
             className="p-1 hover:opacity-60 transition-opacity text-brand-dark"
             aria-label="Open navigation drawer"
           >
-            <Menu className="w-7 h-7 stroke-[1.5]" />
+            <Menu className="w-7 h-7 stroke-[2.25]" />
           </button>
 
           {/* Right Side: Search, Account/Log In, Bag Icons + Help */}
-          <div className="flex items-center gap-4 md:gap-6 text-brand-dark pt-1">
+          <div className="flex items-center gap-4 md:gap-6 text-brand-dark">
             <button
               onClick={() => setIsSearchOpen(true)}
               className="p-1 hover:opacity-60 transition-opacity text-brand-dark flex items-center"
               aria-label="Search"
               title="Search"
             >
-              <Search className="w-6 h-6 stroke-[1.5]" />
+              <Search className="w-5 h-5 md:w-6 md:h-6 stroke-[2.25]" />
             </button>
 
             <a
@@ -110,7 +110,7 @@ export const Header = () => {
               aria-label="Log In"
               title="Log In"
             >
-              <User className="w-6 h-6 stroke-[1.5]" />
+              <User className="w-5 h-5 md:w-6 md:h-6 stroke-[2.25]" />
             </a>
 
             <button
@@ -119,7 +119,7 @@ export const Header = () => {
               aria-label="Shopping Bag"
               title="Shopping Bag"
             >
-              <ShoppingBag className="w-6 h-6 stroke-[1.5]" />
+              <ShoppingBag className="w-5 h-5 md:w-6 md:h-6 stroke-[2.25]" />
               <span className="text-xs font-bold tracking-wider font-mono">
                 [{cartCount}]
               </span>
@@ -127,7 +127,7 @@ export const Header = () => {
 
             <a
               href="#help"
-              className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-dark hover:opacity-60 transition-opacity ml-1"
+              className="text-sm md:text-base font-bold tracking-[0.15em] uppercase text-brand-dark hover:opacity-60 transition-opacity flex items-center h-5 md:h-6 leading-none ml-0.5"
             >
               HELP
             </a>
