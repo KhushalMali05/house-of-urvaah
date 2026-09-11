@@ -63,7 +63,7 @@ export const ProductCard = ({ product, onQuickView }) => {
             <img
               src={product.image}
               alt={product.name}
-              className={`w-full h-full object-cover object-top transition-all duration-700 ease-out transform group-hover:scale-105 ${
+              className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 ease-out transform group-hover:scale-105 ${
                 product.hoverImage && isHovered ? 'opacity-0' : 'opacity-100'
               }`}
               loading="lazy"
@@ -72,7 +72,7 @@ export const ProductCard = ({ product, onQuickView }) => {
               <img
                 src={product.hoverImage}
                 alt={`${product.name} hover view`}
-                className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-700 ease-out transform group-hover:scale-105 ${
+                className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 ease-out transform group-hover:scale-105 ${
                   isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
                 }`}
                 loading="lazy"

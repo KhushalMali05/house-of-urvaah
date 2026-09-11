@@ -231,12 +231,12 @@ export const BEST_SELLERS_PRODUCTS = [
     tag: 'BEST SELLER',
     isNew: false,
     isBestSeller: true,
-    image: '/assets/Images/Brown.png',
-    hoverImage: '/assets/Images/Brown02.png',
+    image: '/assets/Images/Brown02.png',
+    hoverImage: '/assets/Images/Brown03.png',
     gallery: [
-      '/assets/Images/Brown.png',
       '/assets/Images/Brown02.png',
       '/assets/Images/Brown03.png',
+      '/assets/Images/Brown.png',
       '/assets/Images/Brown04.png',
       '/assets/Images/Brown01.png'
     ],
@@ -253,11 +253,12 @@ export const BEST_SELLERS_PRODUCTS = [
     tag: 'EDITORIAL',
     isNew: true,
     isBestSeller: true,
-    image: '/assets/Images/Blue.png',
-    hoverImage: '/assets/Images/Blue02.png',
+    image: '/assets/Images/Blue02.png',
+    hoverImage: '/assets/Images/Blue03.png',
     gallery: [
-      '/assets/Images/Blue.png',
       '/assets/Images/Blue02.png',
+      '/assets/Images/Blue02.png',
+      '/assets/Images/Blue.png',
       '/assets/Images/Blue03.png',
       '/assets/Images/Blue04.png',
       '/assets/Images/Blue01.png'
@@ -275,13 +276,14 @@ export const BEST_SELLERS_PRODUCTS = [
     tag: 'NEW IN',
     isNew: true,
     isBestSeller: true,
-    image: '/assets/Images/Peach_Bloom.jpg',
-    hoverImage: '/assets/Images/Corset04.png',
+    image: '/assets/Images/Corset_Blue2.jpg',
+    hoverImage: '/assets/Images/Corset_Blue1.jpg',
     gallery: [
+      '/assets/Images/Corset_Blue2.jpg',
       '/assets/Images/Peach_Bloom.jpg',
       '/assets/Images/Corset04.png',
       '/assets/Images/Corset_Blue1.jpg',
-      '/assets/Images/Corset_Blue2.jpg'
+      '/assets/Images/Peach.png'
     ],
     colors: ['#FFFFFF', '#111111'],
     sizes: ['S', 'M', 'L'],
@@ -296,13 +298,14 @@ export const BEST_SELLERS_PRODUCTS = [
     tag: 'ESSENTIAL',
     isNew: false,
     isBestSeller: true,
-    image: '/assets/Images/Peach.png',
-    hoverImage: '/assets/Images/Peach03.png',
+    image: '/assets/Images/Peach03.png',
+    hoverImage: '/assets/Images/Peach_Floral.jpg',
     gallery: [
+      '/assets/Images/Peach03.png',
+      '/assets/Images/Peach_Floral.jpg',
+      '/assets/Images/Peach02.png',
       '/assets/Images/Peach.png',
       '/assets/Images/Peach01.png',
-      '/assets/Images/Peach03.png',
-      '/assets/Images/Peach02.png',
       '/assets/Images/Peach04.png'
     ],
     colors: ['#F5F5F0', '#111111'],

@@ -5,7 +5,7 @@ import { ProductCard } from '../common/ProductCard';
 
 export const BestSellers = ({ onQuickView }) => {
   return (
-    <section className="py-16 md:py-20 bg-white font-serif">
+    <section id="best-sellers" className="py-16 md:py-20 bg-white font-serif scroll-mt-20">
       <div className="max-w-[1800px] mx-auto px-4 md:px-8">
         {/* Section Heading */}
         <div className="mb-10 md:mb-14 border-b border-neutral-200 pb-6 md:pb-7">

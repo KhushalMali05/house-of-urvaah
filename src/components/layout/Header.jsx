@@ -21,53 +21,26 @@ export const Header = () => {
       return;
     }
 
-    const getTargetSection = () => {
-      return (
-        document.getElementById('trending-on-gram') ||
-        document.getElementById('best-sellers') ||
-        document.getElementById('recommended-for-you') ||
-        document.querySelector('#women')
-      );
-    };
-
     const handleScroll = () => {
-      const section = getTargetSection();
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        const headerThreshold = 80;
-        setIsScrolled(rect.top <= headerThreshold);
+      const bestSellersSection = document.getElementById('best-sellers');
+      if (bestSellersSection) {
+        const rect = bestSellersSection.getBoundingClientRect();
+        // Navbar becomes visible as Best Sellers section reaches top of viewport (threshold 100px)
+        setIsScrolled(rect.top <= 100);
       } else {
-        setIsScrolled(window.scrollY > 50);
+        setIsScrolled(window.scrollY > 450);
       }
     };
-
-    const targetSection = getTargetSection();
-    let observer;
-
-    if (targetSection && 'IntersectionObserver' in window) {
-      observer = new IntersectionObserver(
-        () => {
-          handleScroll();
-        },
-        {
-          // Observe area around the header height threshold
-          rootMargin: '-80px 0px 0px 0px',
-          threshold: [0, 0.1, 0.5, 1.0],
-        }
-      );
-      observer.observe(targetSection);
-    }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleScroll, { passive: true });
     handleScroll();
 
     return () => {
-      if (observer) observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, []);
+  }, [isHomePage]);
 
   return (
     <header className="fixed top-0 z-40 w-full font-serif select-none transition-all duration-300 ease-in-out">

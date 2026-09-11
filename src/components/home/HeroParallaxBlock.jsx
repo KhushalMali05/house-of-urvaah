@@ -15,21 +15,22 @@ export const HeroParallaxBlock = () => {
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // rect.top is position of container top relative to viewport
-      // rect.bottom is position of container bottom (end of DualCampaignBanner) relative to viewport
-      if (rect.bottom > windowHeight * 0.25) {
+      // fadeStartThreshold: starts fading when bottom of DualCampaignBanner is 1.4x windowHeight from top
+      const fadeStartThreshold = windowHeight * 1.4;
+      // fadeEndThreshold: completely unpinned & opacity 0 when bottom reaches viewport bottom (1.0x windowHeight)
+      const fadeEndThreshold = windowHeight * 1.0;
+
+      if (rect.bottom > fadeEndThreshold) {
         setIsPinned(true);
 
-        // Smooth fade out as bottom of DualCampaignBanner approaches top of viewport
-        const fadeStartThreshold = windowHeight * 0.8;
         if (rect.bottom < fadeStartThreshold) {
-          const fadeProgress = (rect.bottom - windowHeight * 0.25) / (fadeStartThreshold - windowHeight * 0.25);
+          const fadeProgress = (rect.bottom - fadeEndThreshold) / (fadeStartThreshold - fadeEndThreshold);
           setOpacity(Math.max(0, Math.min(1, fadeProgress)));
         } else {
           setOpacity(1);
         }
       } else {
-        // Fully past the parallax block
+        // Fully past the parallax block — unpin before TrendingOnGram enters viewport
         setIsPinned(false);
         setOpacity(0);
       }
@@ -55,8 +56,9 @@ export const HeroParallaxBlock = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.15 }}
-            className="fixed bottom-4 left-2 sm:left-4 md:left-6 lg:left-8 md:bottom-8 lg:bottom-12 z-30 pointer-events-none text-left flex justify-start items-end"
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed bottom-4 left-2 sm:left-4 md:left-6 lg:left-8 md:bottom-8 lg:bottom-12 z-20 pointer-events-none text-left flex justify-start items-end transition-opacity duration-300 ease-out"
+            style={{ opacity }}
           >
             <Logo className="h-24 sm:h-32 md:h-48 lg:h-[250px] w-auto max-w-none -translate-x-[34px] drop-shadow-md" />
           </motion.div>

@@ -38,6 +38,7 @@ export const ProductDetailModal = () => {
   const availableSizes = product?.sizes || [26, 28, 30, 32, 34, 36];
 
   const [selectedImage, setSelectedImage] = useState(gallery[0]);
+  const [isMainHovered, setIsMainHovered] = useState(false);
   const [selectedSize, setSelectedSize] = useState(availableSizes[1] || availableSizes[0]);
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
   const [copiedToast, setCopiedToast] = useState(false);
@@ -248,12 +249,27 @@ export const ProductDetailModal = () => {
                 </div>
 
                 {/* Main Product Image Container (Full image visible with contain) */}
-                <div className="order-1 md:order-2 flex-1 w-full relative aspect-[3/4] max-w-[560px] bg-[#F5F5F0] overflow-hidden shadow-sm border border-neutral-200/60 flex items-center justify-center p-2">
+                <div
+                  className="order-1 md:order-2 flex-1 w-full relative aspect-[3/4] max-w-[560px] bg-[#F5F5F0] overflow-hidden shadow-sm border border-neutral-200/60 flex items-center justify-center p-2 group"
+                  onMouseEnter={() => setIsMainHovered(true)}
+                  onMouseLeave={() => setIsMainHovered(false)}
+                >
                   <img
                     src={selectedImage}
                     alt={product.name}
-                    className="w-full h-full object-contain object-center transition-all duration-500"
+                    className={`w-full h-full object-contain object-center transition-all duration-500 ease-out ${
+                      selectedImage === gallery[0] && product?.hoverImage && isMainHovered ? 'opacity-0' : 'opacity-100'
+                    }`}
                   />
+                  {selectedImage === gallery[0] && product?.hoverImage && (
+                    <img
+                      src={product.hoverImage}
+                      alt={`${product.name} alternate view`}
+                      className={`absolute inset-0 w-full h-full object-contain object-center p-2 transition-all duration-500 ease-out ${
+                        isMainHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                      }`}
+                    />
+                  )}
                   {product.tag && (
                     <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm text-brand-dark px-2.5 py-1 text-[9px] font-semibold tracking-widest uppercase border border-black/5">
                       {product.tag}

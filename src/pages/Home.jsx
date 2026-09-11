@@ -19,11 +19,6 @@ export const Home = () => {
       {/* Hero Video + Dual Campaign Banner Parallax Block with Pinned Logo Overlay */}
       <HeroParallaxBlock />
 
-      {/* TRENDING ON THE GRAM Section */}
-      <section id="trending-on-gram" className="scroll-mt-20">
-        <TrendingOnGram />
-      </section>
-
       {/* BEST SELLERS Section */}
       <section id="best-sellers" className="scroll-mt-20">
         <BestSellers onQuickView={(p) => setPdpProduct(p)} />
@@ -31,6 +26,11 @@ export const Home = () => {
 
       {/* STEAL DEALS Section */}
       <StealDeals />
+
+      {/* TRENDING ON THE GRAM Section */}
+      <section id="trending-on-gram" className="scroll-mt-20">
+        <TrendingOnGram />
+      </section>
 
       {/* WHAT'S HOT RN Section */}
       <section id="whats-hot" className="scroll-mt-20">
