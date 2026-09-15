@@ -91,7 +91,7 @@ export const ProductCard = ({ product, onQuickView }) => {
           }}
           aria-label="Wishlist toggle"
           title="Save to Wishlist"
-          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-brand-dark transition-all duration-300 hover:bg-white hover:scale-110 shadow-sm"
+          className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 z-10 w-9 h-9 sm:w-8 sm:h-8 rounded-full bg-white/85 backdrop-blur-sm flex items-center justify-center text-brand-dark transition-all duration-300 hover:bg-white hover:scale-110 shadow-sm min-w-[36px] min-h-[36px]"
         >
           <Heart
             className={`w-4 h-4 transition-colors duration-300 ${
@@ -100,14 +100,14 @@ export const ProductCard = ({ product, onQuickView }) => {
           />
         </button>
 
-        {/* Quick Action Overlay Bar at bottom of card on hover */}
-        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out flex items-center gap-2">
+        {/* Quick Action Overlay Bar at bottom of card (always visible on mobile, hover reveal on desktop) */}
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-2 sm:p-3 md:translate-y-full md:group-hover:translate-y-0 translate-y-0 transition-transform duration-300 ease-in-out flex items-center gap-1.5 sm:gap-2">
           <button
             onClick={(e) => {
               e.stopPropagation();
               addToCart(product);
             }}
-            className="flex-1 bg-white text-brand-dark text-[11px] font-semibold tracking-wider uppercase py-2 px-3 hover:bg-neutral-100 transition-colors flex items-center justify-center gap-1.5 shadow-md"
+            className="flex-1 bg-white text-brand-dark text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase py-2 px-2 sm:px-3 hover:bg-neutral-100 transition-colors flex items-center justify-center gap-1 shadow-md min-h-[36px]"
           >
             <ShoppingBag className="w-3.5 h-3.5" />
             + Quick Add
@@ -124,7 +124,7 @@ export const ProductCard = ({ product, onQuickView }) => {
             }}
             title="Quick View"
             aria-label="Quick View"
-            className="bg-black/80 hover:bg-black text-white p-2 transition-colors flex items-center justify-center shadow-md"
+            className="bg-black/85 hover:bg-black text-white p-2 min-w-[36px] min-h-[36px] transition-colors flex items-center justify-center shadow-md"
           >
             <Eye className="w-3.5 h-3.5" />
           </button>

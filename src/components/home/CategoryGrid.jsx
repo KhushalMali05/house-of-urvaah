@@ -164,7 +164,7 @@ export const CategoryGrid = () => {
         {/* Single Horizontal Track (1 Row, 4 Visible at once on Desktop) */}
         <div
           ref={scrollRef}
-          className="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-2 -mx-4 px-4 sm:mx-0 sm:px-0"
+          className="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0"
         >
           {RECOMMENDED_PRODUCTS.map((product, idx) => (
             <motion.div
@@ -173,7 +173,7 @@ export const CategoryGrid = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="group/card relative flex flex-col min-w-[70vw] sm:min-w-[45vw] md:min-w-[calc(33.333%-0.75rem)] lg:min-w-[calc(25%-0.75rem)] w-[calc(25%-0.75rem)] flex-shrink-0"
+              className="group/card relative flex flex-col min-w-[70vw] sm:min-w-[45vw] md:min-w-[calc(33.333%-0.75rem)] lg:min-w-[calc(25%-0.75rem)] w-[calc(25%-0.75rem)] flex-shrink-0 snap-center"
             >
               {/* Product Photo Container */}
               <div
@@ -193,11 +193,11 @@ export const CategoryGrid = () => {
                     e.stopPropagation();
                     toggleWishlist(product.id);
                   }}
-                  className="absolute top-2.5 right-2.5 z-10 p-2 rounded-full bg-white/90 shadow-sm text-neutral-700 hover:text-red-600 transition-colors"
+                  className="absolute top-2.5 right-2.5 z-10 p-2.5 min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full bg-white/90 shadow-sm text-neutral-700 hover:text-red-600 transition-colors"
                   aria-label="Wishlist"
                 >
                   <Heart
-                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                    className={`w-4 h-4 ${
                       isInWishlist(product.id) ? 'fill-red-600 text-red-600' : 'stroke-[1.5]'
                     }`}
                   />
@@ -209,10 +209,10 @@ export const CategoryGrid = () => {
                     e.stopPropagation();
                     addToCart(product);
                   }}
-                  className="absolute bottom-2.5 right-2.5 z-10 p-2 rounded-full bg-white/90 shadow-md text-brand-dark hover:bg-black hover:text-white transition-all transform hover:scale-105"
+                  className="absolute bottom-2.5 right-2.5 z-10 p-2.5 min-w-[36px] min-h-[36px] flex items-center justify-center rounded-full bg-white/90 shadow-md text-brand-dark hover:bg-black hover:text-white transition-all transform hover:scale-105"
                   aria-label="Add to Shopping Bag"
                 >
-                  <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.5]" />
+                  <ShoppingBag className="w-4 h-4 stroke-[1.5]" />
                 </button>
               </div>
 

@@ -209,12 +209,12 @@ export const ProductDetailModal = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
           transition={{ duration: 0.25, ease: 'easeOut' }}
-          className="relative z-10 bg-white w-full max-w-[1200px] max-h-[90vh] md:max-h-[88vh] rounded-none sm:rounded-sm shadow-2xl overflow-hidden flex flex-col border border-neutral-200"
+          className="relative z-10 bg-white w-full max-w-[1200px] h-[96vh] sm:h-auto max-h-[96vh] sm:max-h-[88vh] rounded-none sm:rounded-sm shadow-2xl overflow-hidden flex flex-col border border-neutral-200"
         >
           {/* Explicit Close Button ("×" icon) */}
           <button
             onClick={handleClose}
-            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 shadow-md border border-neutral-200 flex items-center justify-center text-brand-dark hover:bg-black hover:text-white transition-all cursor-pointer"
+            className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-30 w-10 h-10 rounded-full bg-white/95 shadow-md border border-neutral-200 flex items-center justify-center text-brand-dark hover:bg-black hover:text-white transition-all cursor-pointer min-w-[44px] min-h-[44px]"
             aria-label="Close modal"
             title="Close (Esc)"
           >

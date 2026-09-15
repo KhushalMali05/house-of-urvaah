@@ -56,7 +56,7 @@ export const CartDrawer = () => {
               </div>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="p-2 hover:bg-neutral-100 transition-colors"
+                className="p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center hover:bg-neutral-100 rounded-full transition-colors cursor-pointer"
                 aria-label="Close cart"
               >
                 <X className="w-5 h-5" />

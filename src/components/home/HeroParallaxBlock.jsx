@@ -57,10 +57,10 @@ export const HeroParallaxBlock = () => {
             animate={{ opacity }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-4 left-2 sm:left-4 md:left-6 lg:left-8 md:bottom-8 lg:bottom-12 z-20 pointer-events-none text-left flex justify-start items-end transition-opacity duration-300 ease-out"
+            className="fixed bottom-3 left-2 sm:left-4 md:left-6 lg:left-8 md:bottom-8 lg:bottom-12 z-20 pointer-events-none text-left flex justify-start items-end transition-opacity duration-300 ease-out max-w-[88vw]"
             style={{ opacity }}
           >
-            <Logo className="h-24 sm:h-32 md:h-48 lg:h-[250px] w-auto max-w-none -translate-x-[34px] drop-shadow-md" />
+            <Logo className="h-10 sm:h-20 md:h-36 lg:h-[250px] w-auto max-w-full -translate-x-[8px] sm:-translate-x-[20px] md:-translate-x-[34px] drop-shadow-md" />
           </motion.div>
         )}
       </AnimatePresence>

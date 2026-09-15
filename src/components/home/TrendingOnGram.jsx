@@ -726,7 +726,7 @@ export const TrendingOnGram = () => {
           AS SEEN ON INSTAGRAM
         </span>
         <h2 className="section-heading text-brand-dark">
-          TRENDING ON THE GRAM
+          <span style={{ color: '#F7F53B', textShadow: '2px 3px 6px rgba(17, 17, 17, 0.18)' }}>TRENDING</span> ON THE GRAM
         </h2>
       </div>
 

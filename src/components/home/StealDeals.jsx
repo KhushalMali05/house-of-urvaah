@@ -83,29 +83,29 @@ export const StealDeals = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
                 whileHover={{ y: -8, scale: 1.015 }}
-                className="group relative block aspect-[3/3.8] sm:aspect-[3/4] w-full max-w-[360px] sm:max-w-none mx-auto rounded-[20px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-[#FAF6EE] via-[#F3ECE0] to-[#E9DFCF] border-2 border-[#E2D5C4] hover:border-neutral-700"
+                className="group relative block aspect-[3/3.2] sm:aspect-[3/4] w-full max-w-[340px] sm:max-w-none mx-auto rounded-[20px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-[#FAF6EE] via-[#F3ECE0] to-[#E9DFCF] border-2 border-[#E2D5C4] hover:border-neutral-700"
               >
                 {/* Subtle Inner Organic Blob / Layered Texture */}
                 <div className="absolute inset-0 bg-radial from-[#FFFFFF]/90 via-transparent to-[#E2D4C3]/40 opacity-80 pointer-events-none" />
                 <div className="absolute inset-3.5 rounded-[12px] border border-white/80 pointer-events-none" />
 
                 {/* Card Content - Vertically Centered */}
-                <div className="relative z-10 flex flex-col items-center justify-between h-full py-12 px-6 text-center select-none">
+                <div className="relative z-10 flex flex-col items-center justify-between h-full py-8 sm:py-12 px-5 sm:px-6 text-center select-none">
                   
                   {/* Top: Icon + Divider */}
-                  <div className="flex flex-col items-center pt-2">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm border border-white flex items-center justify-center text-neutral-900 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                      <IconComponent className="w-7 h-7 stroke-[1.8]" />
+                  <div className="flex flex-col items-center pt-1">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/90 backdrop-blur-sm border border-white flex items-center justify-center text-neutral-900 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="w-5 h-5 sm:w-7 sm:h-7 stroke-[1.8]" />
                     </div>
-                    <div className="w-12 h-[1px] bg-neutral-900/20 my-5" />
+                    <div className="w-10 sm:w-12 h-[1px] bg-neutral-900/20 my-3 sm:my-5" />
                   </div>
 
                   {/* Middle: Label & Price */}
                   <div className="flex flex-col items-center my-auto">
-                    <span className="text-sm sm:text-base md:text-lg tracking-[0.18em] uppercase text-neutral-800 font-serif font-semibold mb-3">
+                    <span className="text-xs sm:text-base md:text-lg tracking-[0.18em] uppercase text-neutral-800 font-serif font-semibold mb-2 sm:mb-3">
                       {deal.label}
                     </span>
-                    <span className="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-neutral-900 tracking-tight">
+                    <span className="text-3xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-neutral-900 tracking-tight">
                       {deal.price}
                     </span>
                   </div>

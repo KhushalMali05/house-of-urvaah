@@ -50,7 +50,7 @@ export const Header = () => {
         =====================================================
       */}
       <div
-        className={`w-full pt-6 pb-4 px-6 md:px-12 text-brand-dark transition-all duration-300 ease-in-out ${
+        className={`w-full pt-3 sm:pt-5 pb-3 px-3 sm:px-6 md:px-12 text-brand-dark transition-all duration-300 ease-in-out ${
           !isScrolled
             ? 'opacity-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 -translate-y-2 pointer-events-none absolute inset-x-0 top-0'
@@ -60,17 +60,17 @@ export const Header = () => {
           {/* Top-Left: Hamburger Icon Only */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-1 hover:opacity-60 transition-opacity text-brand-dark"
+            className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
             aria-label="Open navigation drawer"
           >
-            <Menu className="w-7 h-7 stroke-[2.25]" />
+            <Menu className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.25]" />
           </button>
 
           {/* Right Side: Search, Account/Log In, Bag Icons + Help */}
-          <div className="flex items-center gap-4 md:gap-6 text-brand-dark">
+          <div className="flex items-center gap-1 sm:gap-4 md:gap-6 text-brand-dark">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="p-1 hover:opacity-60 transition-opacity text-brand-dark flex items-center"
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Search"
               title="Search"
             >
@@ -79,7 +79,7 @@ export const Header = () => {
 
             <a
               href="#account"
-              className="p-1 hover:opacity-60 transition-opacity text-brand-dark flex items-center"
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark"
               aria-label="Log In"
               title="Log In"
             >
@@ -88,7 +88,7 @@ export const Header = () => {
 
             <button
               onClick={() => setIsCartOpen(true)}
-              className="p-1 hover:opacity-60 transition-opacity text-brand-dark flex items-center gap-1.5"
+              className="p-2 min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
               aria-label="Shopping Bag"
               title="Shopping Bag"
             >
@@ -100,7 +100,7 @@ export const Header = () => {
 
             <a
               href="#help"
-              className="text-sm md:text-base font-bold tracking-[0.15em] uppercase text-brand-dark hover:opacity-60 transition-opacity flex items-center h-5 md:h-6 leading-none ml-0.5"
+              className="text-xs sm:text-sm md:text-base font-bold tracking-[0.15em] uppercase text-brand-dark hover:opacity-60 transition-opacity flex items-center min-h-[44px] px-1 leading-none ml-0.5"
             >
               HELP
             </a>
@@ -120,30 +120,30 @@ export const Header = () => {
             : 'opacity-0 -translate-y-2 pointer-events-none absolute inset-x-0 top-0'
         }`}
       >
-        <div className="max-w-[1800px] mx-auto px-4 md:px-8 grid grid-cols-3 items-center min-h-[60px] md:min-h-[68px]">
+        <div className="max-w-[1800px] mx-auto px-3 sm:px-4 md:px-8 grid grid-cols-3 items-center min-h-[52px] sm:min-h-[60px] md:min-h-[68px]">
           {/* Column 1 (Left): Hamburger Icon Only */}
           <div className="flex items-center justify-start">
             <button
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-1 hover:opacity-60 transition-opacity text-brand-dark"
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Open navigation drawer"
             >
-              <Menu className="w-6 h-6 stroke-[2]" />
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2]" />
             </button>
           </div>
 
           {/* Column 2 (Center): house of URVAAH Logo Image */}
           <div className="flex items-center justify-center">
             <Link to="/" aria-label="House of Urvaah Home" className="inline-flex items-center justify-center">
-              <Logo className="h-12 sm:h-14 md:h-16 lg:h-20" />
+              <Logo className="h-8 sm:h-12 md:h-16 lg:h-20" />
             </Link>
           </div>
 
           {/* Column 3 (Right): Search, Account, Bag Icons */}
-          <div className="flex items-center justify-end gap-3 md:gap-5 text-brand-dark">
+          <div className="flex items-center justify-end gap-1 sm:gap-3 md:gap-5 text-brand-dark">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="p-1 hover:opacity-60 transition-opacity flex items-center"
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Search"
               title="Search"
             >
@@ -152,7 +152,7 @@ export const Header = () => {
 
             <a
               href="#account"
-              className="p-1 hover:opacity-60 transition-opacity flex items-center"
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark"
               aria-label="Account"
               title="Account"
             >
@@ -161,7 +161,7 @@ export const Header = () => {
 
             <button
               onClick={() => setIsCartOpen(true)}
-              className="p-1 hover:opacity-60 transition-opacity flex items-center gap-1.5"
+              className="p-2 min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
               aria-label="Shopping Bag"
               title="Shopping Bag"
             >

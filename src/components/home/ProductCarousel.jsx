@@ -62,7 +62,7 @@ export const ProductCarousel = ({ onQuickView }) => {
         {/* Carousel Horizontal Scroll Container */}
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 -mx-4 px-4 md:mx-0 md:px-0"
+          className="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-6 -mx-4 px-4 md:mx-0 md:px-0"
         >
           {newInProducts.map((product, idx) => (
             <motion.div
@@ -71,7 +71,7 @@ export const ProductCarousel = ({ onQuickView }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="min-w-[260px] sm:min-w-[300px] md:min-w-[320px] flex-shrink-0"
+              className="min-w-[70vw] sm:min-w-[280px] md:min-w-[320px] flex-shrink-0 snap-center"
             >
               <ProductCard product={product} onQuickView={onQuickView} />
             </motion.div>

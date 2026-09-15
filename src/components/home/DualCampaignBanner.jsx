@@ -60,7 +60,7 @@ export const DualCampaignBanner = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative w-full h-[100vh] sm:h-[115vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
+            className="group relative w-full h-[65vh] sm:h-[90vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
           >
             {blueImages.map((src, i) => (
               <img
@@ -81,7 +81,7 @@ export const DualCampaignBanner = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="group relative w-full h-[100vh] sm:h-[115vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
+            className="group relative w-full h-[65vh] sm:h-[90vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
           >
             {peachImages.map((src, i) => (
               <img
@@ -109,7 +109,7 @@ export const DualCampaignBanner = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="group relative w-full h-[100vh] sm:h-[115vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
+            className="group relative w-full h-[65vh] sm:h-[90vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
           >
             {brownImages.map((src, i) => (
               <img
@@ -130,7 +130,7 @@ export const DualCampaignBanner = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="group relative w-full h-[100vh] sm:h-[115vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
+            className="group relative w-full h-[65vh] sm:h-[90vh] md:h-[125vh] lg:h-[135vh] overflow-hidden bg-neutral-100"
           >
             {corsetImages.map((src, i) => (
               <img

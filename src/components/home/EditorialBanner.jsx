@@ -46,16 +46,16 @@ export const EditorialBanner = () => {
               Defined by oversized silhouettes, fluid draping, and uncompromised material integrity. Designed for timeless elegance across seasonal transitions.
             </p>
 
-            <div className="flex flex-wrap gap-3">
-              <a href="#lookbook">
-                <Button variant="primary">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 w-full sm:w-auto">
+              <a href="#lookbook" className="w-full sm:w-auto">
+                <Button variant="primary" className="w-full justify-center">
                   DISCOVER THE COLLECTION
                 </Button>
               </a>
-              <a href="#campaign" className="inline-block">
+              <a href="#campaign" className="inline-block w-full sm:w-auto">
                 <button
                   type="button"
-                  className="relative inline-flex items-center justify-center font-medium text-xs px-6 py-3 tracking-widest uppercase border border-brand-dark text-brand-dark group overflow-hidden transition-colors duration-400 select-none cursor-pointer"
+                  className="w-full relative inline-flex items-center justify-center font-medium text-xs px-6 py-3 tracking-widest uppercase border border-brand-dark text-brand-dark group overflow-hidden transition-colors duration-400 select-none cursor-pointer"
                 >
                   {/* Revealed background fill underneath */}
                   <span className="absolute inset-0 bg-brand-dark pointer-events-none" />

@@ -48,12 +48,13 @@ export const QuickViewModal = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.2 }}
-          className="relative z-10 w-full max-w-3xl bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row text-brand-dark"
+          className="relative z-10 w-full max-w-3xl bg-white shadow-2xl overflow-y-auto max-h-[96vh] md:max-h-[88vh] flex flex-col md:flex-row text-brand-dark rounded-none sm:rounded-sm border border-neutral-200"
         >
           {/* Close Button */}
           <button
             onClick={() => setQuickViewProduct(null)}
-            className="absolute top-4 right-4 z-20 p-2 bg-white/80 hover:bg-white rounded-full transition-colors"
+            className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 z-30 p-2.5 bg-white/95 shadow-md border border-neutral-200 rounded-full hover:bg-black hover:text-white transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center cursor-pointer"
+            aria-label="Close modal"
           >
             <X className="w-5 h-5 text-black" />
           </button>

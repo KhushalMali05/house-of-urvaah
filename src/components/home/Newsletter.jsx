@@ -43,7 +43,7 @@ export const Newsletter = () => {
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row items-stretch border-b border-black pb-2 gap-2">
+            <div className="flex flex-col sm:flex-row items-stretch border-b border-black pb-2 gap-2 sm:gap-3">
               <input
                 type="email"
                 placeholder="ENTER YOUR EMAIL ADDRESS"
@@ -52,13 +52,13 @@ export const Newsletter = () => {
                   setEmail(e.target.value);
                   if (status === 'error') setStatus('idle');
                 }}
-                className="flex-1 bg-transparent text-xs tracking-widest uppercase outline-none py-2 px-1 placeholder:text-neutral-300 font-light"
+                className="flex-1 bg-transparent text-xs tracking-widest uppercase outline-none py-2.5 px-2 placeholder:text-neutral-300 font-light min-h-[44px]"
               />
               <Button
                 type="submit"
                 variant="primary"
                 size="sm"
-                className="group flex items-center justify-center gap-2 whitespace-nowrap"
+                className="group flex items-center justify-center gap-2 whitespace-nowrap min-h-[44px] w-full sm:w-auto cursor-pointer"
               >
                 SUBSCRIBE
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
