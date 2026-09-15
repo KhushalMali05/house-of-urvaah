@@ -4,7 +4,7 @@ import { Button } from '../common/Button';
 
 export const EditorialBanner = () => {
   return (
-    <section className="my-16 py-12 bg-brand-sand text-brand-dark overflow-hidden font-serif">
+    <section id="editorial" className="my-16 py-12 bg-brand-sand text-brand-dark overflow-hidden font-serif scroll-mt-20">
       <div className="max-w-[1800px] mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Editorial Image */}

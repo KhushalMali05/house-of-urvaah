@@ -9,6 +9,7 @@ import { TrendingOnGram } from '../components/home/TrendingOnGram';
 import { WhatsHot } from '../components/home/WhatsHot';
 import { BrandStory } from '../components/home/BrandStory';
 import { Newsletter } from '../components/home/Newsletter';
+import { AuthSection } from '../components/home/AuthSection';
 import { useCart } from '../context/CartContext';
 
 export const Home = () => {
@@ -28,7 +29,8 @@ export const Home = () => {
       <StealDeals />
 
       {/* TRENDING ON THE GRAM Section */}
-      <section id="trending-on-gram" className="scroll-mt-20">
+      <section id="trending" className="scroll-mt-20">
+        <div id="trending-on-gram" />
         <TrendingOnGram />
       </section>
 
@@ -38,7 +40,8 @@ export const Home = () => {
       </section>
 
       {/* 4.4 Category Grid / Shop by Category */}
-      <section id="recommended-for-you" className="scroll-mt-20">
+      <section id="recommended" className="scroll-mt-20">
+        <div id="recommended-for-you" />
         <CategoryGrid />
       </section>
 
@@ -47,6 +50,9 @@ export const Home = () => {
 
       {/* 4.8 Sustainability / Brand Story Strip */}
       <BrandStory />
+
+      {/* Login & Sign Up Atelier Section */}
+      <AuthSection />
 
       {/* 4.9 Newsletter Signup */}
       <Newsletter />

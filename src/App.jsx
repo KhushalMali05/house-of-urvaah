@@ -9,7 +9,10 @@ import { SearchOverlay } from './components/layout/SearchOverlay';
 import { MobileMenu } from './components/layout/MobileMenu';
 import { QuickViewModal } from './components/common/QuickViewModal';
 import { ProductDetailModal } from './components/common/ProductDetailModal';
+import { AuthModal } from './components/common/AuthModal';
 import { Home } from './pages/Home';
+import { AboutUs } from './pages/AboutUs';
+import { ContactUs } from './pages/ContactUs';
 import { ProductDetail } from './pages/ProductDetail';
 
 // Simple placeholder page component for future route stubs
@@ -46,14 +49,18 @@ export function App() {
 
   return (
     <CartProvider>
-      <div className="min-h-screen flex flex-col bg-white text-brand-dark antialiased font-serif selection:bg-brand-dark selection:text-white relative">
+      <div className="min-h-screen flex flex-col bg-white text-brand-dark antialiased font-serif selection:bg-brand-dark selection:text-white relative w-full max-w-full overflow-x-hidden">
         {/* 4.2 Header / Nav */}
         <Header />
 
         {/* Dynamic Route View */}
-        <div className="flex-1">
+        <div className="flex-1 w-full max-w-full overflow-x-hidden">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/new-in" element={<Home />} />
             <Route path="/clothing" element={<Home />} />
@@ -67,7 +74,8 @@ export function App() {
             <Route path="/sale" element={<Home />} />
             <Route path="/cart" element={<PlaceholderPage title="SHOPPING BAG" />} />
             <Route path="/wishlist" element={<PlaceholderPage title="WISHLIST" />} />
-            <Route path="/account" element={<PlaceholderPage title="MY ACCOUNT" />} />
+            <Route path="/account" element={<Home />} />
+            <Route path="/login" element={<Home />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </div>
@@ -82,6 +90,7 @@ export function App() {
         <MobileMenu />
         <QuickViewModal />
         <ProductDetailModal />
+        <AuthModal />
       </div>
     </CartProvider>
   );

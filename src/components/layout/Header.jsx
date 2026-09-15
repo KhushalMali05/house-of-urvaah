@@ -7,12 +7,15 @@ import { Logo } from '../common/Logo';
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage =
+    (location.pathname === '/' || location.pathname === '') &&
+    (!location.hash || location.hash === '#' || location.hash === '#/' || location.hash === '');
   const {
     cartCount,
     setIsCartOpen,
     setIsSearchOpen,
     setIsMobileMenuOpen,
+    openAuthModal,
   } = useCart();
 
   useEffect(() => {
@@ -25,10 +28,10 @@ export const Header = () => {
       const bestSellersSection = document.getElementById('best-sellers');
       if (bestSellersSection) {
         const rect = bestSellersSection.getBoundingClientRect();
-        // Navbar becomes visible as Best Sellers section reaches top of viewport (threshold 100px)
+        // Navbar becomes solid as Best Sellers section reaches top of viewport (threshold 100px)
         setIsScrolled(rect.top <= 100);
       } else {
-        setIsScrolled(window.scrollY > 450);
+        setIsScrolled(window.scrollY > 400);
       }
     };
 
@@ -40,7 +43,7 @@ export const Header = () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [isHomePage]);
+  }, [isHomePage, location.pathname, location.hash]);
 
   return (
     <header className="fixed top-0 z-40 w-full font-serif select-none transition-all duration-300 ease-in-out">
@@ -77,14 +80,14 @@ export const Header = () => {
               <Search className="w-5 h-5 md:w-6 md:h-6 stroke-[2.25]" />
             </button>
 
-            <a
-              href="#account"
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark"
-              aria-label="Log In"
-              title="Log In"
+            <button
+              onClick={() => openAuthModal('login')}
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
+              aria-label="Log In / Sign Up"
+              title="Log In / Sign Up"
             >
               <User className="w-5 h-5 md:w-6 md:h-6 stroke-[2.25]" />
-            </a>
+            </button>
 
             <button
               onClick={() => setIsCartOpen(true)}
@@ -98,12 +101,13 @@ export const Header = () => {
               </span>
             </button>
 
-            <a
-              href="#help"
+            <Link
+              to="/contact"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
               className="text-xs sm:text-sm md:text-base font-bold tracking-[0.15em] uppercase text-brand-dark hover:opacity-60 transition-opacity flex items-center min-h-[44px] px-1 leading-none ml-0.5"
             >
               HELP
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -150,14 +154,14 @@ export const Header = () => {
               <Search className="w-5 h-5 md:w-6 md:h-6 stroke-[2]" />
             </button>
 
-            <a
-              href="#account"
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark"
+            <button
+              onClick={() => openAuthModal('login')}
+              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Account"
               title="Account"
             >
               <User className="w-5 h-5 md:w-6 md:h-6 stroke-[2]" />
-            </a>
+            </button>
 
             <button
               onClick={() => setIsCartOpen(true)}

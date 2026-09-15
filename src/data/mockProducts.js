@@ -236,7 +236,6 @@ export const BEST_SELLERS_PRODUCTS = [
     gallery: [
       '/assets/Images/Brown02.png',
       '/assets/Images/Brown03.png',
-      '/assets/Images/Brown.png',
       '/assets/Images/Brown04.png',
       '/assets/Images/Brown01.png'
     ],

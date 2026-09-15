@@ -7,8 +7,10 @@ export const ProductCard = ({ product, onQuickView }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [carouselIndex, setCarouselIndex] = useState(0);
   const navigate = useNavigate();
-  const { addToCart, toggleWishlist, isInWishlist, setPdpProduct } = useCart();
+  const { addToCart, toggleWishlist, isInWishlist, setPdpProduct, pdpProduct, quickViewProduct } = useCart();
   const isWishlisted = isInWishlist(product.id);
+  const isModalOpen = Boolean(pdpProduct || quickViewProduct);
+  const activeHover = isHovered && !isModalOpen;
 
   useEffect(() => {
     if (!product?.carouselImages || product.carouselImages.length <= 1) return;
@@ -19,6 +21,7 @@ export const ProductCard = ({ product, onQuickView }) => {
   }, [product?.carouselImages]);
 
   const handleCardClick = () => {
+    if (isModalOpen) return;
     if (product?.id) {
       if (setPdpProduct) {
         setPdpProduct(product);
@@ -39,8 +42,10 @@ export const ProductCard = ({ product, onQuickView }) => {
   return (
     <div
       onClick={handleCardClick}
-      className="group relative flex flex-col cursor-pointer transition-all duration-300 editorial-card"
-      onMouseEnter={() => setIsHovered(true)}
+      className={`group relative flex flex-col cursor-pointer transition-all duration-300 editorial-card ${
+        isModalOpen ? 'pointer-events-none' : ''
+      }`}
+      onMouseEnter={() => !isModalOpen && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Image Container */}
@@ -54,7 +59,7 @@ export const ProductCard = ({ product, onQuickView }) => {
               alt={`${product.name} ${i}`}
               className={`absolute inset-0 w-full h-full object-cover object-top filter brightness-[0.98] contrast-[1.02] transition-opacity duration-1000 ease-in-out ${
                 i === carouselIndex ? 'opacity-100' : 'opacity-0'
-              } transform group-hover:scale-105 transition-transform duration-700 ease-out`}
+              } transform ${!isModalOpen ? 'group-hover:scale-105' : ''} transition-transform duration-700 ease-out`}
               loading="lazy"
             />
           ))
@@ -63,25 +68,23 @@ export const ProductCard = ({ product, onQuickView }) => {
             <img
               src={product.image}
               alt={product.name}
-              className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 ease-out transform group-hover:scale-105 ${
-                product.hoverImage && isHovered ? 'opacity-0' : 'opacity-100'
-              }`}
+              className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 ease-out transform ${
+                !isModalOpen ? 'group-hover:scale-105' : ''
+              } ${product.hoverImage && activeHover ? 'opacity-0' : 'opacity-100'}`}
               loading="lazy"
             />
             {product.hoverImage && (
               <img
                 src={product.hoverImage}
                 alt={`${product.name} hover view`}
-                className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 ease-out transform group-hover:scale-105 ${
-                  isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                }`}
+                className={`absolute inset-0 w-full h-full object-cover object-top transition-all duration-500 ease-out transform ${
+                  !isModalOpen ? 'group-hover:scale-105' : ''
+                } ${activeHover ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 loading="lazy"
               />
             )}
           </div>
         )}
-
-
 
         {/* Wishlist Icon Button */}
         <button
@@ -101,7 +104,9 @@ export const ProductCard = ({ product, onQuickView }) => {
         </button>
 
         {/* Quick Action Overlay Bar at bottom of card (always visible on mobile, hover reveal on desktop) */}
-        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-2 sm:p-3 md:translate-y-full md:group-hover:translate-y-0 translate-y-0 transition-transform duration-300 ease-in-out flex items-center gap-1.5 sm:gap-2">
+        <div className={`absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-2 sm:p-3 transition-transform duration-300 ease-in-out flex items-center gap-1.5 sm:gap-2 ${
+          !isModalOpen ? 'md:translate-y-full md:group-hover:translate-y-0 translate-y-0' : 'translate-y-full pointer-events-none'
+        }`}>
           <button
             onClick={(e) => {
               e.stopPropagation();

@@ -29,6 +29,9 @@
     color: #111111;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
   }
 
   /* Custom Scrollbar for ZARA editorial minimalist look */
@@ -47,6 +50,14 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: #444444;
+  }
+
+  /* Hide Edge & Browser native password reveal icons */
+  input::-ms-reveal,
+  input::-ms-clear {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
   }
 }
 

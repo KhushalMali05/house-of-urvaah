@@ -249,10 +249,10 @@ const GRAM_VIDEOS = [
       category: 'OUTERWEAR',
       subcategory: 'Blazers & Tailoring',
       tag: 'ICONIC',
-      image: '/assets/Images/Brown.png',
+      image: '/assets/Images/Brown02.png',
       hoverImage: '/assets/Images/Brown01.png',
       gallery: [
-        '/assets/Images/Brown.png',
+        '/assets/Images/Brown02.png',
         '/assets/Images/Brown01.png',
         '/assets/Images/Brown04.png'
       ],

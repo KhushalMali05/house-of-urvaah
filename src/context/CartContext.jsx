@@ -21,8 +21,25 @@ export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState('login'); // 'login' | 'signup'
+  const [user, setUser] = useState(null); // null or { name, email }
   const [quickViewProduct, setQuickViewProduct] = useState(null);
   const [pdpProduct, setPdpProduct] = useState(null);
+
+  const loginUser = (userData) => {
+    setUser(userData);
+    setIsAuthModalOpen(false);
+  };
+
+  const logoutUser = () => {
+    setUser(null);
+  };
+
+  const openAuthModal = (mode = 'login') => {
+    setAuthMode(mode);
+    setIsAuthModalOpen(true);
+  };
 
   const addToCart = (product, selectedSize = 'M') => {
     setCart((prevCart) => {
@@ -99,6 +116,15 @@ export const CartProvider = ({ children }) => {
         setIsSearchOpen,
         isMobileMenuOpen,
         setIsMobileMenuOpen,
+        isAuthModalOpen,
+        setIsAuthModalOpen,
+        authMode,
+        setAuthMode,
+        openAuthModal,
+        user,
+        setUser,
+        loginUser,
+        logoutUser,
         quickViewProduct,
         setQuickViewProduct,
         pdpProduct,

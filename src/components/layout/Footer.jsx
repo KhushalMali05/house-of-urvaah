@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Globe, ChevronDown } from 'lucide-react';
 import { Logo } from '../common/Logo';
 
@@ -38,7 +39,7 @@ export const Footer = () => {
               <ChevronDown className={`w-4 h-4 text-neutral-500 sm:hidden transition-transform duration-200 ${openSections.help ? 'rotate-180' : ''}`} />
             </button>
             <ul className={`space-y-3 text-xs tracking-wider text-neutral-500 uppercase ${openSections.help ? 'block pt-2 pb-1' : 'hidden sm:block'}`}>
-              <li><a href="#contact" className="hover:text-black transition-colors block py-1">Contact Us</a></li>
+              <li><Link to="/contact" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })} className="hover:text-black transition-colors block py-1">Contact Us</Link></li>
               <li><a href="#track" className="hover:text-black transition-colors block py-1">Track Order</a></li>
               <li><a href="#returns" className="hover:text-black transition-colors block py-1">Returns & Exchanges</a></li>
               <li><a href="#shipping" className="hover:text-black transition-colors block py-1">Shipping Information</a></li>
@@ -58,7 +59,7 @@ export const Footer = () => {
               <ChevronDown className={`w-4 h-4 text-neutral-500 sm:hidden transition-transform duration-200 ${openSections.company ? 'rotate-180' : ''}`} />
             </button>
             <ul className={`space-y-3 text-xs tracking-wider text-neutral-500 uppercase ${openSections.company ? 'block pt-2 pb-1' : 'hidden sm:block'}`}>
-              <li><a href="#about" className="hover:text-black transition-colors block py-1">About Us</a></li>
+              <li><Link to="/about" onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })} className="hover:text-black transition-colors block py-1">About Us</Link></li>
               <li><a href="#sustainability" className="hover:text-black transition-colors block py-1">Join Life / Sustainability</a></li>
               <li><a href="#careers" className="hover:text-black transition-colors block py-1">Careers</a></li>
               <li><a href="#stores" className="hover:text-black transition-colors block py-1">Store Locator</a></li>
