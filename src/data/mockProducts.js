@@ -256,8 +256,6 @@ export const BEST_SELLERS_PRODUCTS = [
     hoverImage: '/assets/Images/Blue03.png',
     gallery: [
       '/assets/Images/Blue02.png',
-      '/assets/Images/Blue02.png',
-      '/assets/Images/Blue.png',
       '/assets/Images/Blue03.png',
       '/assets/Images/Blue04.png',
       '/assets/Images/Blue01.png'
@@ -275,14 +273,13 @@ export const BEST_SELLERS_PRODUCTS = [
     tag: 'NEW IN',
     isNew: true,
     isBestSeller: true,
-    image: '/assets/Images/Corset_Blue2.jpg',
-    hoverImage: '/assets/Images/Corset_Blue1.jpg',
+    image: '/assets/Images/Corset01.png',
+    hoverImage: '/assets/Images/Corset02.png',
     gallery: [
-      '/assets/Images/Corset_Blue2.jpg',
-      '/assets/Images/Peach_Bloom.jpg',
-      '/assets/Images/Corset04.png',
-      '/assets/Images/Corset_Blue1.jpg',
-      '/assets/Images/Peach.png'
+      '/assets/Images/Corset01.png',
+      '/assets/Images/Corset02.png',
+      '/assets/Images/Corset03.png',
+      '/assets/Images/Corset04.png'
     ],
     colors: ['#FFFFFF', '#111111'],
     sizes: ['S', 'M', 'L'],
@@ -303,9 +300,7 @@ export const BEST_SELLERS_PRODUCTS = [
       '/assets/Images/Peach03.png',
       '/assets/Images/Peach_Floral.jpg',
       '/assets/Images/Peach02.png',
-      '/assets/Images/Peach.png',
-      '/assets/Images/Peach01.png',
-      '/assets/Images/Peach04.png'
+      '/assets/Images/Peach01.png'
     ],
     colors: ['#F5F5F0', '#111111'],
     sizes: ['S', 'M', 'L'],

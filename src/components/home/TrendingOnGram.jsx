@@ -585,7 +585,10 @@ const ShopTheLookModal = ({ look, currentIndex, totalLooks, onClose, onPrev, onN
                     >
                       <img
                         src={img}
-                        alt={`Look thumbnail ${idx + 1}`}
+                        alt={look.product.name}
+                        onError={(e) => {
+                          e.currentTarget.parentElement.style.display = 'none';
+                        }}
                         className="w-full h-full object-contain object-center p-0.5"
                       />
                     </button>

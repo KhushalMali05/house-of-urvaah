@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { Menu, Search, User, ShoppingBag } from 'lucide-react';
+import { Menu, Search, User, Heart, ShoppingBag } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { Logo } from '../common/Logo';
 
@@ -12,6 +12,7 @@ export const Header = () => {
     (!location.hash || location.hash === '#' || location.hash === '#/' || location.hash === '');
   const {
     cartCount,
+    wishlistCount,
     setIsCartOpen,
     setIsSearchOpen,
     setIsMobileMenuOpen,
@@ -69,11 +70,11 @@ export const Header = () => {
             <Menu className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2.25]" />
           </button>
 
-          {/* Right Side: Search, Account/Log In, Bag Icons + Help */}
-          <div className="flex items-center gap-1 sm:gap-4 md:gap-6 text-brand-dark">
+          {/* Right Side: Search, Account/Log In, Wishlist, Bag Icons + Help */}
+          <div className="flex items-center gap-0 sm:gap-1 md:gap-1.5 text-brand-dark">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
+              className="hidden sm:flex p-1 sm:p-1.5 items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Search"
               title="Search"
             >
@@ -82,16 +83,31 @@ export const Header = () => {
 
             <button
               onClick={() => openAuthModal('login')}
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
+              className="hidden sm:flex p-1 sm:p-1.5 items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Log In / Sign Up"
               title="Log In / Sign Up"
             >
               <User className="w-5 h-5 md:w-6 md:h-6 stroke-[2.25]" />
             </button>
 
+            <Link
+              to="/wishlist"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+              className="hidden sm:flex p-1 sm:p-1.5 items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
+              aria-label="Wishlist"
+              title="Wishlist"
+            >
+              <Heart className="w-5 h-5 md:w-6 md:h-6 stroke-[2.25]" />
+              {wishlistCount > 0 && (
+                <span className="text-xs font-bold tracking-wider font-mono">
+                  [{wishlistCount}]
+                </span>
+              )}
+            </Link>
+
             <button
               onClick={() => setIsCartOpen(true)}
-              className="p-2 min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
+              className="p-1 sm:p-1.5 flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
               aria-label="Shopping Bag"
               title="Shopping Bag"
             >
@@ -104,7 +120,7 @@ export const Header = () => {
             <Link
               to="/contact"
               onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
-              className="text-xs sm:text-sm md:text-base font-bold tracking-[0.15em] uppercase text-brand-dark hover:opacity-60 transition-opacity flex items-center min-h-[44px] px-1 leading-none ml-0.5"
+              className="hidden sm:flex text-xs sm:text-sm md:text-base font-bold tracking-[0.15em] uppercase text-brand-dark hover:opacity-60 transition-opacity items-center min-h-[44px] px-1 leading-none ml-0.5"
             >
               HELP
             </Link>
@@ -143,11 +159,11 @@ export const Header = () => {
             </Link>
           </div>
 
-          {/* Column 3 (Right): Search, Account, Bag Icons */}
-          <div className="flex items-center justify-end gap-1 sm:gap-3 md:gap-5 text-brand-dark">
+          {/* Column 3 (Right): Search, Account, Wishlist, Bag Icons */}
+          <div className="flex items-center justify-end gap-0 sm:gap-1 md:gap-1.5 text-brand-dark">
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
+              className="hidden sm:flex p-1 sm:p-1.5 items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Search"
               title="Search"
             >
@@ -156,16 +172,31 @@ export const Header = () => {
 
             <button
               onClick={() => openAuthModal('login')}
-              className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
+              className="hidden sm:flex p-1 sm:p-1.5 items-center justify-center hover:opacity-60 transition-opacity text-brand-dark cursor-pointer"
               aria-label="Account"
               title="Account"
             >
               <User className="w-5 h-5 md:w-6 md:h-6 stroke-[2]" />
             </button>
 
+            <Link
+              to="/wishlist"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+              className="hidden sm:flex p-1 sm:p-1.5 items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
+              aria-label="Wishlist"
+              title="Wishlist"
+            >
+              <Heart className="w-5 h-5 md:w-6 md:h-6 stroke-[2]" />
+              {wishlistCount > 0 && (
+                <span className="text-xs font-semibold tracking-wider font-mono">
+                  [{wishlistCount}]
+                </span>
+              )}
+            </Link>
+
             <button
               onClick={() => setIsCartOpen(true)}
-              className="p-2 min-h-[44px] flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
+              className="p-1 sm:p-1.5 flex items-center justify-center hover:opacity-60 transition-opacity text-brand-dark gap-1 cursor-pointer"
               aria-label="Shopping Bag"
               title="Shopping Bag"
             >

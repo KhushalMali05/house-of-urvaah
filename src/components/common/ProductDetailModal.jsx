@@ -26,14 +26,18 @@ export const ProductDetailModal = () => {
         BEST_SELLERS_PRODUCTS[0]
     : null;
 
-  const gallery = product?.gallery || (product ? [
-    product.image || '/assets/Images/Brown01.png',
-    product.hoverImage || '/assets/Images/Brown04.png',
-    '/assets/Images/Brown02.png',
-    '/assets/Images/Brown03.png',
-    '/assets/Images/Brown01.png',
-    '/assets/Images/Brown04.png'
-  ] : []);
+  const gallery = Array.from(
+    new Set(
+      (product?.gallery || [
+        product?.image,
+        product?.hoverImage,
+        '/assets/Images/Brown02.png',
+        '/assets/Images/Brown03.png',
+        '/assets/Images/Brown04.png',
+        '/assets/Images/Brown01.png'
+      ]).filter(Boolean)
+    )
+  ).slice(0, 4);
 
   const availableSizes = product?.sizes || [26, 28, 30, 32, 34, 36];
 
@@ -241,7 +245,10 @@ export const ProductDetailModal = () => {
                     >
                       <img
                         src={imgUrl}
-                        alt={`Thumbnail ${idx + 1}`}
+                        alt={product.name}
+                        onError={(e) => {
+                          e.currentTarget.parentElement.style.display = 'none';
+                        }}
                         className="w-full h-full object-cover object-top"
                       />
                     </button>

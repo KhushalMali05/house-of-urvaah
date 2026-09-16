@@ -28,23 +28,24 @@ export const CartDrawer = () => {
   return (
     <AnimatePresence>
       {isCartOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto font-serif selection:bg-brand-dark selection:text-white select-none">
+        <div className="fixed inset-0 z-50 overflow-hidden font-serif selection:bg-brand-dark selection:text-white select-none">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
             onClick={() => setIsCartOpen(false)}
-            className="fixed inset-0 bg-black/60 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/50 backdrop-blur-xs z-40"
           />
 
-          {/* Centered Popup Modal Container */}
+          {/* Right Slide-in Side Drawer Panel */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-full max-w-lg max-h-[88vh] bg-white border border-neutral-200 shadow-2xl overflow-hidden flex flex-col my-auto text-brand-dark"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+            className="fixed top-0 right-0 bottom-0 z-50 w-full max-w-md h-full bg-white border-l border-neutral-200 shadow-2xl overflow-hidden flex flex-col text-brand-dark"
           >
             {/* Header */}
             <div className="p-5 sm:p-6 border-b border-neutral-100 flex items-center justify-between bg-[#FAF8F3]">

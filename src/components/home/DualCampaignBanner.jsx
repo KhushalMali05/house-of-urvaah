@@ -20,7 +20,7 @@ export const DualCampaignBanner = () => {
 
   // Auto-carousel state for the third section (Left Column Bottom)
   const peachImages = [
-    '/assets/Images/Peach_Floral.jpg',
+    '/assets/Images/Peach02.png',
     '/assets/Images/Peach01.png',
     '/assets/Images/Peach03.png'
   ];
@@ -28,8 +28,8 @@ export const DualCampaignBanner = () => {
 
   // Auto-carousel state for the fourth section (Right Column Bottom)
   const corsetImages = [
-    '/assets/Images/Corset_Blue1.jpg',
-    '/assets/Images/Corset_Blue2.jpg',
+    '/assets/Images/Corset01.png',
+    '/assets/Images/Corset02.png',
     '/assets/Images/Corset04.png'
   ];
   const [corsetIndex, setCorsetIndex] = useState(0);

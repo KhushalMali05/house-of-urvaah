@@ -92,6 +92,8 @@ export const CartProvider = ({ children }) => {
 
   const isInWishlist = (productId) => wishlist.includes(productId);
 
+  const wishlistCount = useMemo(() => wishlist.length, [wishlist]);
+
   const cartCount = useMemo(() => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   }, [cart]);
@@ -110,6 +112,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cart,
         wishlist,
+        wishlistCount,
         isCartOpen,
         setIsCartOpen,
         isSearchOpen,
