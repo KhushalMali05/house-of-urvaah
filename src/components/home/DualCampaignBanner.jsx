@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { getSupabaseMediaUrl } from '../../lib/supabase';
 
 export const DualCampaignBanner = () => {
   // Auto-carousel state for the first section (Left Column Top)
@@ -7,7 +8,7 @@ export const DualCampaignBanner = () => {
     '/assets/Images/Blue_Halter.jpg',
     '/assets/Images/Blue02.png',
     '/assets/Images/Blue03.png'
-  ];
+  ].map(getSupabaseMediaUrl);
   const [blueIndex, setBlueIndex] = useState(0);
 
   // Auto-carousel state for the second section (Right Column Top)
@@ -15,7 +16,7 @@ export const DualCampaignBanner = () => {
     '/assets/Images/Brown_Floral.jpg',
     '/assets/Images/Brown02.png',
     '/assets/Images/Brown03.png'
-  ];
+  ].map(getSupabaseMediaUrl);
   const [brownIndex, setBrownIndex] = useState(0);
 
   // Auto-carousel state for the third section (Left Column Bottom)
@@ -23,7 +24,7 @@ export const DualCampaignBanner = () => {
     '/assets/Images/Peach02.png',
     '/assets/Images/Peach01.png',
     '/assets/Images/Peach03.png'
-  ];
+  ].map(getSupabaseMediaUrl);
   const [peachIndex, setPeachIndex] = useState(0);
 
   // Auto-carousel state for the fourth section (Right Column Bottom)
@@ -31,7 +32,7 @@ export const DualCampaignBanner = () => {
     '/assets/Images/Corset01.png',
     '/assets/Images/Corset02.png',
     '/assets/Images/Corset04.png'
-  ];
+  ].map(getSupabaseMediaUrl);
   const [corsetIndex, setCorsetIndex] = useState(0);
 
   useEffect(() => {

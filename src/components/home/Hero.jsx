@@ -1,10 +1,14 @@
 import React from 'react';
+import { getSupabaseMediaUrl } from '../../lib/supabase';
 
 export const Hero = () => {
+  const supabaseVideoSrc = getSupabaseMediaUrl('/assets/video/Hero-section-video-two.mp4');
+  const localVideoSrc = '/assets/video/Hero-section-video-two.mp4';
+
   return (
     <section className="relative w-full h-screen overflow-hidden bg-white text-brand-dark font-serif select-none">
       {/* Full-bleed Looping Cinematic Video Background (ZARA Style) */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-neutral-900">
         <video
           autoPlay
           muted
@@ -12,7 +16,8 @@ export const Hero = () => {
           playsInline
           className="w-full h-full object-cover filter brightness-[0.98] contrast-[1.02]"
         >
-          <source src="/assets/video/Hero-section-video-two.mp4" type="video/mp4" />
+          <source src={supabaseVideoSrc} type="video/mp4" />
+          <source src={localVideoSrc} type="video/mp4" />
         </video>
 
         {/* Subtle Scrim Gradient at top for header icon legibility */}

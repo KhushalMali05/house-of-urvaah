@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, User, Search, Heart, ShoppingBag, ChevronDown, ArrowRight } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { getSupabaseMediaUrl } from '../../lib/supabase';
 
 const TABS = ['WOMAN'];
 
 const FEATURED_PREVIEWS = [
-  { label: 'THE NEW', image: '/assets/Images/Brown01.png', href: '#recommended' },
-  { label: 'DRESSES', image: '/assets/Images/Corset01.png', href: '#whats-hot' },
-  { label: 'TAILORED', image: '/assets/Images/Brown02.png', href: '#best-sellers' },
-  { label: 'CO-ORDS', image: '/assets/Images/Blue02.png', href: '#steal-deals' },
-  { label: 'OUTERWEAR', image: '/assets/Images/Brown04.png', href: '#editorial' },
-  { label: 'KNITWEAR', image: '/assets/Images/Peach03.png', href: '#trending' }
+  { label: 'THE NEW', image: getSupabaseMediaUrl('/assets/Images/Brown01.png'), href: '#recommended' },
+  { label: 'DRESSES', image: getSupabaseMediaUrl('/assets/Images/Corset01.png'), href: '#whats-hot' },
+  { label: 'TAILORED', image: getSupabaseMediaUrl('/assets/Images/Brown02.png'), href: '#best-sellers' },
+  { label: 'CO-ORDS', image: getSupabaseMediaUrl('/assets/Images/Blue02.png'), href: '#steal-deals' },
+  { label: 'OUTERWEAR', image: getSupabaseMediaUrl('/assets/Images/Brown04.png'), href: '#editorial' },
+  { label: 'KNITWEAR', image: getSupabaseMediaUrl('/assets/Images/Peach03.png'), href: '#trending' }
 ];
 
 const MENU_SECTIONS = [

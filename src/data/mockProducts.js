@@ -1,3 +1,5 @@
+import { getSupabaseMediaUrl } from '../lib/supabase';
+
 export const CATEGORIES = [
   {
     id: 'new-in',
@@ -220,7 +222,7 @@ export const FEATURED_CATEGORIES = [
   }
 ];
 
-export const BEST_SELLERS_PRODUCTS = [
+const RAW_BEST_SELLERS_PRODUCTS = [
   {
     id: 'bs-101',
     name: 'OVERSIZED TAILORED BLAZER',
@@ -308,7 +310,7 @@ export const BEST_SELLERS_PRODUCTS = [
   }
 ];
 
-export const MOCK_PRODUCTS = [
+const RAW_MOCK_PRODUCTS = [
   {
     id: 'prod-101',
     name: 'DOUBLE-BREASTED OVERSIZED BLAZER',
@@ -432,6 +434,16 @@ export const MOCK_PRODUCTS = [
     description: 'Crisp 100% organic cotton poplin button-down shirt with drop shoulders and extended pointed collar.'
   }
 ];
+
+const mapProductMedia = (product) => ({
+  ...product,
+  image: getSupabaseMediaUrl(product.image),
+  hoverImage: product.hoverImage ? getSupabaseMediaUrl(product.hoverImage) : undefined,
+  gallery: product.gallery ? product.gallery.map(getSupabaseMediaUrl) : [getSupabaseMediaUrl(product.image)]
+});
+
+export const BEST_SELLERS_PRODUCTS = RAW_BEST_SELLERS_PRODUCTS.map(mapProductMedia);
+export const MOCK_PRODUCTS = RAW_MOCK_PRODUCTS.map(mapProductMedia);
 
 export const ANNOUNCEMENTS = [
   "FREE EXPRESS SHIPPING ON ORDERS ABOVE ₹2999",
