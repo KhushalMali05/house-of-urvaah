@@ -1,6 +1,14 @@
 # Locked Sections Registry
 
-This file tracks sections, components, or pages marked as "perfect" by the user. Once a section is listed here, it is LOCKED and must not be edited, refactored, restyled, or modified unless the user explicitly requests changes to it in a future message.
+This file tracks sections, components, or pages marked as "PERFECT" by the user. Once a section is listed here, it is LOCKED and must NOT be edited, refactored, restyled, or modified unless the user explicitly requests changes to it in a future message.
 
-## Currently Locked Sections
-*(None yet)*
+## Locked Sections (marked "perfect" by user)
+- Header (Mobile + Desktop) — locked on [16-09-2026]
+- Navbar (Mobile + Desktop) — locked on [16-09-2026]
+- Side Navbar (Mobile + Desktop) — locked on [16-09-2026]
+
+---
+
+### Strict Guidelines for Locked Sections
+- Do NOT edit, restyle, refactor, or modify any code related to these 3 sections — including their icons, spacing, layout, responsive behavior, or functionality — unless explicitly instructed again in the future with a specific change request.
+- If any future request might affect a shared component used by these sections (e.g., a shared icon component or shared styles), ask for confirmation before making changes.
