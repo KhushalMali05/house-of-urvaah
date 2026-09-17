@@ -1,9 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { BEST_SELLERS_PRODUCTS } from '../../data/mockProducts';
 import { ProductCard } from '../common/ProductCard';
+import { productApi } from '../../services/productApi';
 
 export const BestSellers = ({ onQuickView }) => {
+  const [products, setProducts] = useState(BEST_SELLERS_PRODUCTS);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    productApi.getFeaturedProducts()
+      .then((data) => {
+        if (isMounted && data && data.length > 0) {
+          setProducts(data);
+        }
+      })
+      .catch((err) => {
+        console.warn('Using fallback best sellers:', err.message);
+      })
+      .finally(() => {
+        if (isMounted) setLoading(false);
+      });
+
+    return () => { isMounted = false; };
+  }, []);
+
   return (
     <section id="best-sellers" className="py-16 md:py-20 bg-white font-serif scroll-mt-20">
       <div className="max-w-[1800px] mx-auto px-4 md:px-8">
@@ -17,9 +39,9 @@ export const BestSellers = ({ onQuickView }) => {
           </h2>
         </div>
 
-        {/* Static 4-Column Product Grid (No scroll, no arrows) */}
+        {/* 4-Column Product Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-          {BEST_SELLERS_PRODUCTS.map((product, idx) => (
+          {products.map((product, idx) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}

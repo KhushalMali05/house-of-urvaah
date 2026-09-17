@@ -1,5 +1,5 @@
 export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://fhbdceauisvlcpmuzpmf.supabase.co";
-export const BUCKET_NAME = import.meta.env.VITE_SUPABASE_STORAGE_BUCKET || "house-ofvaah";
+export const BUCKET_NAME = import.meta.env.VITE_SUPABASE_STORAGE_BUCKET || "houseofurvaah-media";
 export const CDN_BASE_URL = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET_NAME}`;
 
 /**
