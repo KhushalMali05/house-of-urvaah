@@ -78,12 +78,31 @@ const RECOMMENDED_PRODUCTS = [
   }
 ];
 
+import { productApi } from '../../services/productApi';
+
 export const CategoryGrid = () => {
   const scrollRef = useRef(null);
+  const [productsList, setProductsList] = useState(RECOMMENDED_PRODUCTS);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const { addToCart, toggleWishlist, isInWishlist, setQuickViewProduct } = useCart();
+
+  useEffect(() => {
+    let isMounted = true;
+    productApi.getProducts({ limit: 8 })
+      .then(res => {
+        const data = Array.isArray(res) ? res : (res?.data || []);
+        if (isMounted && data && data.length > 0) {
+          setProductsList(data.map(p => ({
+            ...p,
+            formattedPrice: `₹ ${Number(p.price).toLocaleString('en-IN')}`
+          })));
+        }
+      })
+      .catch(() => {});
+    return () => { isMounted = false; };
+  }, []);
 
   const checkScrollPosition = () => {
     if (!scrollRef.current) return;
@@ -166,7 +185,7 @@ export const CategoryGrid = () => {
           ref={scrollRef}
           className="flex gap-3 sm:gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2 -mx-4 px-4 sm:mx-0 sm:px-0"
         >
-          {RECOMMENDED_PRODUCTS.map((product, idx) => (
+          {productsList.map((product, idx) => (
             <motion.div
               key={product.id}
               initial={{ opacity: 0, y: 20 }}

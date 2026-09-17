@@ -13,18 +13,39 @@ import {
 } from 'lucide-react';
 import { BEST_SELLERS_PRODUCTS, MOCK_PRODUCTS } from '../../data/mockProducts';
 import { useCart } from '../../context/CartContext';
+import { productApi } from '../../services/productApi';
 
 export const ProductDetailModal = () => {
   const { pdpProduct, setPdpProduct, addToCart, toggleWishlist, isInWishlist, setIsCartOpen } = useCart();
+  const [liveProduct, setLiveProduct] = useState(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (pdpProduct) {
+      const prodId = typeof pdpProduct === 'object' ? pdpProduct.id : pdpProduct;
+      if (prodId) {
+        productApi.getProductById(prodId)
+          .then(data => {
+            if (isMounted && data) {
+              setLiveProduct(data);
+            }
+          })
+          .catch(() => {});
+      }
+    } else {
+      setLiveProduct(null);
+    }
+    return () => { isMounted = false; };
+  }, [pdpProduct]);
 
   // If pdpProduct is a string (id) or object, normalize product object
-  const product = pdpProduct
+  const product = liveProduct || (pdpProduct
     ? typeof pdpProduct === 'object'
       ? pdpProduct
       : BEST_SELLERS_PRODUCTS.find((p) => p.id === pdpProduct) ||
         MOCK_PRODUCTS.find((p) => p.id === pdpProduct) ||
         BEST_SELLERS_PRODUCTS[0]
-    : null;
+    : null);
 
   const gallery = Array.from(
     new Set(
