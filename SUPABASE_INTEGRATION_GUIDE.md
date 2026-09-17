@@ -9,8 +9,8 @@ This guide details the complete step-by-step procedure to connect **Supabase Sto
 | Property | Value |
 | :--- | :--- |
 | **Supabase Project Name** | `HouseofUrvaah` |
-| **Supabase Project Reference ID** | `ucnqcqktkikbrbfvihvt` |
-| **Supabase Project Base URL** | `https://ucnqcqktkikbrbfvihvt.supabase.co` |
+| **Supabase Project Reference ID** | `YOUR_SUPABASE_PROJECT_REF` |
+| **Supabase Project Base URL** | `https://YOUR_SUPABASE_PROJECT_REF.supabase.co` |
 | **Supabase Public Storage Bucket** | `houseofurvaah-media` |
 | **Storage Access Level** | **PUBLIC** |
 
@@ -20,9 +20,9 @@ This guide details the complete step-by-step procedure to connect **Supabase Sto
 
 ### Step 1: Obtain API Keys from Supabase Dashboard
 
-1. Open your [Supabase Project Dashboard](https://supabase.com/dashboard/project/ucnqcqktkikbrbfvihvt).
+1. Open your [Supabase Project Dashboard](https://supabase.com/dashboard).
 2. On the left sidebar, click **Project Settings** (Gear icon ⚙️) → **API**.
-3. Under **Project API keys**, copy the **`anon` `public`** key (e.g. `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...`).
+3. Under **Project API keys**, copy the **`anon` `public`** key.
 
 ---
 
@@ -30,28 +30,29 @@ This guide details the complete step-by-step procedure to connect **Supabase Sto
 
 In your Supabase Dashboard, navigate to **Storage** → **Buckets** → **`houseofurvaah-media`**.
 
-#### 1. Create Folder `Images/` and Upload Product Images:
-Upload all image files from your project's `public/assets/Images/` folder into the `Images/` folder inside `houseofurvaah-media`:
-- `Blue01.png`, `Blue02.png`, `Blue03.png`, `Blue04.png`, `Blue_Halter.jpg`
-- `Brown01.png`, `Brown02.png`, `Brown03.png`, `Brown04.png`, `Brown_Floral.jpg`
-- `Corset01.png`, `Corset02.png`, `Corset03.png`, `Corset04.png`, `Corset_Blue1.jpg`, `Corset_Blue2.jpg`
-- `Peach01.png`, `Peach02.png`, `Peach03.png`, `Peach04.png`, `Peach_Floral.jpg`
-- `Outfit_Collage.png`
+Organize your storage bucket into two primary folders:
 
-#### 2. Create Folder `Videos/` and Upload Hero Video:
-Upload the background video file from `public/assets/video/` into the `Videos/` folder inside `houseofurvaah-media`:
-- `Hero-section-video-two.mp4`
+```text
+houseofurvaah-media/
+├── Images/
+│   ├── Blue01.png
+│   ├── Blue02.png
+│   ├── Brown01.png
+│   └── ... (all image assets)
+└── Videos/
+    └── Hero-section-video-two.mp4
+```
 
 ---
 
-### Step 3: Project Environment Configuration (`.env`)
+### Step 3: Configure Environment Variables
 
-Add the following environment variables to your `.env` file in the project root:
+Create or update your `.env` file in the project root:
 
 ```env
 # Supabase Configuration for House of Urvaah
-VITE_SUPABASE_PROJECT_REF=ucnqcqktkikbrbfvihvt
-VITE_SUPABASE_URL=https://ucnqcqktkikbrbfvihvt.supabase.co
+VITE_SUPABASE_PROJECT_REF=YOUR_SUPABASE_PROJECT_REF
+VITE_SUPABASE_URL=https://YOUR_SUPABASE_PROJECT_REF.supabase.co
 VITE_SUPABASE_ANON_KEY=YOUR_COPIED_SUPABASE_ANON_KEY
 VITE_SUPABASE_STORAGE_BUCKET=houseofurvaah-media
 ```
@@ -60,25 +61,24 @@ VITE_SUPABASE_STORAGE_BUCKET=houseofurvaah-media
 
 ### Step 4: Supabase Client & CDN Helper Utility (`src/lib/supabase.js`)
 
-The project includes a helper module [`src/lib/supabase.js`](file:///c:/workspace/HouseOfUrvaah/src/lib/supabase.js) that resolves any local media path to your public Supabase Storage CDN URL:
+The project includes a helper module [`src/lib/supabase.js`](file:///c:/workspace/House-Of-Urvaah/src/lib/supabase.js) that resolves local media paths to your public Supabase Storage CDN URL when configured, or falls back to local paths when unconfigured:
 
 ```javascript
 import { createClient } from '@supabase/supabase-js';
 
-const SUPABASE_PROJECT_REF = import.meta.env.VITE_SUPABASE_PROJECT_REF || 'ucnqcqktkikbrbfvihvt';
-export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || `https://${SUPABASE_PROJECT_REF}.supabase.co`;
+export const SUPABASE_PROJECT_REF = import.meta.env.VITE_SUPABASE_PROJECT_REF || '';
+export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || (SUPABASE_PROJECT_REF ? `https://${SUPABASE_PROJECT_REF}.supabase.co` : '');
 export const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 export const BUCKET_NAME = import.meta.env.VITE_SUPABASE_STORAGE_BUCKET || 'houseofurvaah-media';
 
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY || 'placeholder');
+export const supabase = (SUPABASE_URL && SUPABASE_ANON_KEY)
+  ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
 
-/**
- * Resolves local media paths like "/assets/Images/Brown01.png" or "/assets/video/Hero-section-video-two.mp4"
- * to: https://ucnqcqktkikbrbfvihvt.supabase.co/storage/v1/object/public/houseofurvaah-media/Videos/Hero-section-video-two.mp4
- */
 export const getSupabaseMediaUrl = (path) => {
   if (!path) return '';
   if (path.startsWith('http://') || path.startsWith('https://')) return path;
+  if (!SUPABASE_URL) return path;
 
   let cleanPath = path;
   if (cleanPath.startsWith('/assets/')) {
@@ -89,7 +89,6 @@ export const getSupabaseMediaUrl = (path) => {
     cleanPath = cleanPath.slice(1);
   }
 
-  // Normalize folder casing to match Supabase Storage bucket ('Videos/' and 'Images/')
   if (cleanPath.startsWith('video/')) {
     cleanPath = cleanPath.replace('video/', 'Videos/');
   } else if (cleanPath.startsWith('images/')) {
@@ -106,9 +105,9 @@ export const getSupabaseMediaUrl = (path) => {
 
 | Media Asset Type | Local Path | Resolved Supabase Storage CDN URL |
 | :--- | :--- | :--- |
-| **Hero Background Video** | `/assets/video/Hero-section-video-two.mp4` | `https://ucnqcqktkikbrbfvihvt.supabase.co/storage/v1/object/public/houseofurvaah-media/Videos/Hero-section-video-two.mp4` |
-| **Product Image** | `/assets/Images/Brown01.png` | `https://ucnqcqktkikbrbfvihvt.supabase.co/storage/v1/object/public/houseofurvaah-media/Images/Brown01.png` |
-| **Campaign Banner Image** | `/assets/Images/Blue02.png` | `https://ucnqcqktkikbrbfvihvt.supabase.co/storage/v1/object/public/houseofurvaah-media/Images/Blue02.png` |
+| **Hero Background Video** | `/assets/video/Hero-section-video-two.mp4` | `https://YOUR_SUPABASE_PROJECT_REF.supabase.co/storage/v1/object/public/houseofurvaah-media/Videos/Hero-section-video-two.mp4` |
+| **Product Image** | `/assets/Images/Brown01.png` | `https://YOUR_SUPABASE_PROJECT_REF.supabase.co/storage/v1/object/public/houseofurvaah-media/Images/Brown01.png` |
+| **Campaign Banner Image** | `/assets/Images/Blue02.png` | `https://YOUR_SUPABASE_PROJECT_REF.supabase.co/storage/v1/object/public/houseofurvaah-media/Images/Blue02.png` |
 
 ---
 
@@ -116,4 +115,4 @@ export const getSupabaseMediaUrl = (path) => {
 
 1. **Verify Public Bucket Access**: Ensure `houseofurvaah-media` is marked **PUBLIC** in your Supabase Dashboard so CDN URLs can be accessed without auth headers.
 2. **Test Build**: Run `npm run build` to confirm everything compiles without errors.
-3. **Verify CDN Loading**: Inspect network requests in DevTools (F12) to verify media requests originate from `https://ucnqcqktkikbrbfvihvt.supabase.co`.
+3. **Verify CDN Loading**: Inspect network requests in DevTools (F12) to verify media requests originate from your configured Supabase URL.
