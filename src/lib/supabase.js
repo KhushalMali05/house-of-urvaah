@@ -1,8 +1,14 @@
 import { createClient } from '@supabase/supabase-js';
 
-export const SUPABASE_PROJECT_REF = import.meta.env.VITE_SUPABASE_PROJECT_REF || '';
-export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || (SUPABASE_PROJECT_REF ? `https://${SUPABASE_PROJECT_REF}.supabase.co` : '');
-export const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const rawUrl = import.meta.env.VITE_SUPABASE_URL || '';
+const rawKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+
+const isValidUrl = (url) => {
+  return typeof url === 'string' && (url.startsWith('http://') || url.startsWith('https://')) && !url.includes('YOUR_');
+};
+
+export const SUPABASE_URL = isValidUrl(rawUrl) ? rawUrl : '';
+export const SUPABASE_ANON_KEY = (typeof rawKey === 'string' && !rawKey.includes('YOUR_')) ? rawKey : '';
 export const BUCKET_NAME = import.meta.env.VITE_SUPABASE_STORAGE_BUCKET || 'houseofurvaah-media';
 
 export const supabase = (SUPABASE_URL && SUPABASE_ANON_KEY)
@@ -11,7 +17,7 @@ export const supabase = (SUPABASE_URL && SUPABASE_ANON_KEY)
 
 /**
  * Returns the public Supabase CDN URL for a given media path.
- * If SUPABASE_URL is configured, it resolves to the Supabase CDN URL.
+ * If SUPABASE_URL is valid, it resolves to the Supabase CDN URL.
  * Otherwise, it falls back seamlessly to the local asset path.
  */
 export const getSupabaseMediaUrl = (path) => {
@@ -37,4 +43,5 @@ export const getSupabaseMediaUrl = (path) => {
 
   return `${SUPABASE_URL}/storage/v1/object/public/${BUCKET_NAME}/${cleanPath}`;
 };
+
 
