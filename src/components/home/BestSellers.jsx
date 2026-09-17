@@ -12,7 +12,7 @@ export const BestSellers = ({ onQuickView }) => {
           <span className="text-[10px] tracking-[0.3em] uppercase text-neutral-400 font-serif block mb-1">
             CURATED ESSENTIALS
           </span>
-          <h2 className="section-heading text-brand-dark">
+          <h2 className="section-heading font-serif tracking-[0.2em] text-brand-dark">
             BEST SELLERS
           </h2>
         </div>

@@ -296,12 +296,12 @@ const RAW_BEST_SELLERS_PRODUCTS = [
     tag: 'ESSENTIAL',
     isNew: false,
     isBestSeller: true,
-    image: '/assets/Images/Peach03.png',
-    hoverImage: '/assets/Images/Peach_Floral.jpg',
+    image: '/assets/Images/Peach02.png',
+    hoverImage: '/assets/Images/Peach04.png',
     gallery: [
-      '/assets/Images/Peach03.png',
-      '/assets/Images/Peach_Floral.jpg',
       '/assets/Images/Peach02.png',
+      '/assets/Images/Peach04.png',
+      '/assets/Images/Peach03.png',
       '/assets/Images/Peach01.png'
     ],
     colors: ['#F5F5F0', '#111111'],

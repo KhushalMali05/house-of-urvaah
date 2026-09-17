@@ -19,7 +19,7 @@ export default {
       },
       fontFamily: {
         serif: ['Le Jour Serif', 'serif'],
-        script: ['Parfumerie Script', 'cursive'],
+        script: ['Parfumerie Script', 'Pinyon Script', 'Alex Brush', 'Great Vibes', 'cursive'],
         sans: ['Le Jour Serif', 'serif'],
         mono: ['Le Jour Serif', 'serif'],
       },
