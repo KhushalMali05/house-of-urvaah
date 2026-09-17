@@ -3,21 +3,23 @@ export const BUCKET_NAME = import.meta.env.VITE_SUPABASE_STORAGE_BUCKET || "hous
 export const CDN_BASE_URL = `${SUPABASE_URL}/storage/v1/object/public/${BUCKET_NAME}`;
 
 /**
- * Universal Media URL Resolver:
- * - External URLs (http/https) -> returned directly
- * - Local static bundle paths (assets/...) -> served from local web server (/assets/...)
- * - Supabase storage paths -> served from Supabase CDN
+ * Ensures 100% of images and videos are loaded directly from Supabase Storage CDN
  */
 export const getSupabaseMediaUrl = (path) => {
   if (!path) return "";
   if (path.startsWith("http://") || path.startsWith("https://")) {
     return path;
   }
-  const cleanPath = path.startsWith("/") ? path.slice(1) : path;
+  let cleanPath = path.startsWith("/") ? path.slice(1) : path;
 
-  // Local static asset fallback for bundled public assets
+  // Remove "assets/" prefix if present
   if (cleanPath.startsWith("assets/")) {
-    return `/${cleanPath}`;
+    cleanPath = cleanPath.replace(/^assets\//, "");
+  }
+
+  // Normalize "video/" to "Videos/" to match Supabase bucket folder
+  if (cleanPath.startsWith("video/")) {
+    cleanPath = cleanPath.replace(/^video\//, "Videos/");
   }
 
   return `${CDN_BASE_URL}/${cleanPath}`;
